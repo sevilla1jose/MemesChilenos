@@ -1,13 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <style name="splashImage">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:src">@drawable/logo_name</item>
+    </style>
+
     <style name="textTitleBold24">
         <item name="android:layout_width">0dp</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:fontFamily">@font/roboto_bold</item>
-        <item name="android:gravity">center</item>
-        <item name="android:textSize">@dimen/sp24</item>
+        <item name="android:gravity">center|center_vertical|center_horizontal</item>
+        <item name="android:textSize">@dimen/sp20</item>
         <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="textTitleNormal18">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:fontFamily">@font/roboto_regular</item>
+        <item name="android:gravity">center|center_vertical|center_horizontal</item>
+        <item name="android:textSize">@dimen/sp18</item>
+        <item name="android:textStyle">normal</item>
         <item name="android:textColor">@color/black</item>
     </style>
 

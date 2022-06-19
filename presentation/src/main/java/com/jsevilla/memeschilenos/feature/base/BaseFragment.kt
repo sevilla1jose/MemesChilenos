@@ -10,59 +10,56 @@ import androidx.fragment.app.Fragment
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import kotlin.reflect.KClass
 
-abstract class BaseFragment<T : ViewDataBinding, out ViewModelType : BaseViewModel>(clazz: KClass<ViewModelType>) :
-    Fragment() {
+abstract class BaseFragment<T : ViewDataBinding, out V : BaseViewModel>(
+    getLayoutId: Int
+) : Fragment(getLayoutId) {
 
     private lateinit var viewDataBinding: T
-    private lateinit var rootView: View
-    //val myViewModel: ViewModelType by viewModel(clazz)
 
-    abstract val getLayoutId: Int
+    private var _viewModel: V? = null
+
+    abstract val getViewModel: V
 
     abstract val getBindingVariable: Int
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        /*if (myViewModel == null) {
-            throw Exception("View Model must not be null.")
-        }*/
+    override fun onResume() {
+        super.onResume()
+        onResumeFragment()
     }
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        viewDataBinding = DataBindingUtil.inflate(inflater, getLayoutId, container, false)
-        rootView = viewDataBinding.root
-        //viewDataBinding.setVariable(getBindingVariable, myViewModel)
-        return rootView
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        _viewModel = if (_viewModel == null) getViewModel else _viewModel
+        if (_viewModel == null) {
+            throw Exception("View Model must not be null.")
+        }
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        viewDataBinding = DataBindingUtil.bind(view)!!
+        viewDataBinding.setVariable(getBindingVariable, _viewModel)
         viewDataBinding.lifecycleOwner = this.viewLifecycleOwner
         viewDataBinding.executePendingBindings()
         if (savedInstanceState == null)
-            onFragmentViewReady(view)
-
-        onErrorView()
+            onViewCreatedFragment(viewDataBinding)
     }
 
-    private fun onErrorView() {
-        /*myViewModel.errorCause.observe(viewLifecycleOwner, {
-            val message = it as String
-            val b = MessageFragment(
-                message,
-                getString(R.string.btnOk)
-            )
-            b.show(childFragmentManager, "MessageFragment")
-
-            actionError()
-        })*/
+    override fun onPause() {
+        super.onPause()
+        onPauseFragment()
     }
 
-    abstract fun onFragmentViewReady(view: View)
+    override fun onStop() {
+        super.onStop()
+        onStopFragment()
+    }
 
-    abstract fun actionError()
+    abstract fun onResumeFragment()
+
+    abstract fun onViewCreatedFragment(viewDataBinding: T)
+
+    abstract fun onPauseFragment()
+
+    abstract fun onStopFragment()
 }
