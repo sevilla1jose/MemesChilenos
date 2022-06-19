@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Memes Chilenos</string>
+    <string name="txtSave">Guardar Información</string>
+    <string name="btnOk">Aceptar</string>
 </resources>

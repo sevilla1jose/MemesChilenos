@@ -1,0 +1,111 @@
+ext {
+    // ConstraintLayout
+    def constraintLayout = '2.1.4'
+
+    // Appcompat
+    def appcompat = '1.4.2'
+
+    // Androidx Core
+    def core = '1.8.0'
+
+    // Navigation
+    def nav_version = '2.4.2'
+
+    // Android Dx
+    def lifecycleVersion = '2.4.1'
+
+    // Koin
+    def koinVersion = '3.2.0'
+
+    // Material Components
+    def materialVersion = '1.6.1'
+
+    // Kotlin Coroutines
+    def coroutinesVersion = '1.3.9'
+
+    // Junit Android
+    def junitVersion = '4.13.2'
+
+    // Androidx Arch Core
+    def androidxArchCoreVersion = '2.1.0'
+
+    // Room Database Android
+    def roomVersion = '2.4.2'
+
+    // Retrofit Android
+    def retrofitVersion = "2.9.0"
+
+    // Logging Interceptor Android
+    def loggingInterceptorVersion = '4.10.0'
+
+    /*
+     * Presentation dependencies
+     */
+    presentationDependencies = [
+            constraintLayout  : "androidx.constraintlayout:constraintlayout:$constraintLayout",
+            appCompat         : "androidx.appcompat:appcompat:$appcompat",
+            androidCore       : "androidx.core:core-ktx:$core",
+            viewModel         : "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycleVersion",
+            livedata          : "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycleVersion",
+            material          : "com.google.android.material:material:$materialVersion",
+            koin              : "io.insert-koin:koin-android:$koinVersion",
+            coroutinesCore    : "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutinesVersion",
+            coroutinesAndroid : "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutinesVersion"
+    ]
+
+    compileLifecycleDependencies = [
+            lifecycleCompiler: "androidx.lifecycle:lifecycle-compiler:$lifecycleVersion"
+    ]
+
+    presentationTestImplementationDependencies = [
+            androidXRunner  : 'androidx.test:runner:1.4.0',
+            androidXEspresso: 'androidx.test.espresso:espresso-core:3.4.0'
+    ]
+
+    /*
+     * Navigation Dependencies
+     */
+    navigationDependencies = [
+            navigationFragment: "androidx.navigation:navigation-fragment-ktx:$nav_version",
+            navigationUI      : "androidx.navigation:navigation-ui-ktx:$nav_version"
+    ]
+
+    /*
+     * Domain Dependencies
+     */
+    domainDependencies = [
+            koin                : "io.insert-koin:koin-core:$koinVersion",
+            coroutinesCore      : "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutinesVersion",
+            coroutinesAndroid   : "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutinesVersion",
+    ]
+
+    testDependencies = [
+            junit               : "junit:junit:$junitVersion",
+            androidxArchcore    : "androidx.arch.core:core-testing:$androidxArchCoreVersion"
+    ]
+
+    roomDependencies = [
+            roomCompiler: "androidx.room:room-compiler:$roomVersion"
+    ]
+
+    /*
+     * Data Dependencies
+     */
+    dataDependencies = [
+            koin                    : "io.insert-koin:koin-android:$koinVersion",
+            retrofit                : "com.squareup.retrofit2:retrofit:$retrofitVersion",
+            loggingInterceptor      : "com.squareup.okhttp3:logging-interceptor:$loggingInterceptorVersion",
+            gsonConverter           : "com.squareup.retrofit2:converter-gson:$retrofitVersion",
+            roomDataBase            : "androidx.room:room-runtime:$roomVersion",
+            coroutinesCore          : "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutinesVersion",
+            coroutinesAndroid       : "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutinesVersion"
+    ]
+
+    dataTestDependencies = [
+            junit           : "junit:junit:$junitVersion",
+            androidXcore    : "androidx.arch.core:core-testing:$androidxArchCoreVersion",
+            coroutinesTest  : "org.jetbrains.kotlinx:kotlinx-coroutines-test:$coroutinesVersion",
+            koinTest        : "io.insert-koin:koin-test:$koinVersion",
+            roomTest        : "androidx.room:room-testing:$roomVersion"
+    ]
+}
