@@ -1,0 +1,70 @@
+plugins {
+    id 'com.android.library'
+    id 'org.jetbrains.kotlin.android'
+    id 'org.jetbrains.kotlin.kapt'
+}
+
+def env = new Properties()
+if (rootProject.file("env.properties").exists())
+    env.load(new FileInputStream(rootProject.file("env.properties")))
+
+android {
+    compileSdk 32
+
+    defaultConfig {
+        minSdk 21
+        targetSdk 32
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
+    }
+
+    buildTypes {
+        release {
+            debuggable false
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+
+            buildConfigField("String", "BaseURL", "\"${env['baseUrl']}\"")
+        }
+
+        qa {
+            minifyEnabled false
+            debuggable false
+
+            buildConfigField("String", "BaseURL", "\"${env['baseUrlQA']}\"")
+        }
+
+        develop {
+            minifyEnabled false
+            debuggable true
+
+            buildConfigField("String", "BaseURL", "\"${env['baseUrlDevelop']}\"")
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    variantFilter { variant ->
+        if (variant.buildType.name == 'debug')
+            setIgnore(true)
+    }
+
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_1_8.toString()
+    }
+}
+
+dependencies {
+    def dataDependencies = rootProject.ext.dataDependencies
+    def dataTestDependencies = rootProject.ext.dataTestDependencies
+
+    api dataDependencies.values()
+    kapt rootProject.ext.roomDependencies.roomCompiler
+    testImplementation dataTestDependencies.values()
+
+    implementation project(":domain")
+}
