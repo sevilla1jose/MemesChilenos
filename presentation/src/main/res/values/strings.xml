@@ -6,10 +6,10 @@
     <string name="txtWelcome">!Bienvenido!</string>
     <string name="txtDetailsWelcome">Te damos la bienvenida a la primera aplicación de memes de Chile donde podrás ver las publicaciones del momento sin ningún tipo de restricciones.</string>
     <string name="txtPermission">Solicitud de Permisos</string>
-    <string name="txtDetailsPermissionLocation">Requerimos permiso para usar la ubicación, esto permitirá que tu experiencia sea única</string>
-    <string name="txtDetailsPermissionCamera">Requerimos permiso para usar la Cámara, esto permitirá que tu experiencia sea única</string>
+    <string name="txtDetailsPermissionLocation">!Oye Memer@, necesitamos acoplarnos a tu ubicación!</string>
+    <string name="txtDetailsPermissionCamera">Si quieres subir o guardar memes, danos permiso a tu galería</string>
     <string name="txtFinishIntro">!Todo Listo!</string>
-    <string name="txtDetailsFinishIntro">Estamos listos para que uses Memes Chilenos, ¡Vive tu experiencia Wow!</string>
+    <string name="txtDetailsFinishIntro">Estamos listos para que uses Memes Chilenos, \n ¡Vive tu experiencia Wow!</string>
 
     <string name="btnToAccept">Aceptar</string>
 </resources>

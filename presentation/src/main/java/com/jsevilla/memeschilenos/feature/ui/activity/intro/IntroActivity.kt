@@ -40,7 +40,7 @@ class IntroActivity : AppIntro2() {
 
         askForPermissions(
             permissions = arrayOf(
-                Manifest.permission.CAMERA
+                Manifest.permission.WRITE_EXTERNAL_STORAGE
             ),
             slideNumber = 3,
             required = true
