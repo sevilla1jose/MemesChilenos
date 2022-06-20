@@ -33,7 +33,7 @@
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/txtTitle"
-            style="@style/textTitleBold24"
+            style="@style/textTitleBold20"
             android:layout_marginStart="@dimen/dp40"
             android:layout_marginTop="@dimen/dp8"
             android:layout_marginEnd="@dimen/dp40"
