@@ -5,6 +5,7 @@ import android.os.Looper
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.jsevilla.memeschilenos.domain.entity.Failure
+import com.jsevilla.memeschilenos.domain.usecase.IntroUseCase
 import com.jsevilla.memeschilenos.feature.base.BaseViewModel
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -12,7 +13,9 @@ import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.launch
 import kotlin.coroutines.CoroutineContext
 
-class MainViewModel : BaseViewModel(), CoroutineScope {
+class MainViewModel(
+    private val introUseCase: IntroUseCase
+) : BaseViewModel(), CoroutineScope {
 
     init {
         showLoading(false)
@@ -30,7 +33,7 @@ class MainViewModel : BaseViewModel(), CoroutineScope {
     val initPage: LiveData<Boolean> = _initPage
 
     private val runnable = Runnable {
-        _initPage.value = true
+        _initPage.value = introUseCase.getIntro()
     }
 
     fun initProcess() {

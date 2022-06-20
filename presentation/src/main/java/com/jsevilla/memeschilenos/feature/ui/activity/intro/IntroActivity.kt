@@ -9,8 +9,11 @@ import com.github.appintro.AppIntroCustomLayoutFragment.Companion.newInstance
 import com.github.appintro.AppIntroPageTransformerType
 import com.jsevilla.memeschilenos.R
 import com.jsevilla.memeschilenos.feature.ui.activity.home.HomeActivity
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class IntroActivity : AppIntro2() {
+    private val introViewModel: IntroViewModel by viewModel()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -51,6 +54,7 @@ class IntroActivity : AppIntro2() {
 
     public override fun onDonePressed(currentFragment: Fragment?) {
         super.onDonePressed(currentFragment)
+        introViewModel.setIntroFinish()
         val intent = Intent(this@IntroActivity, HomeActivity::class.java)
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
         startActivity(intent)
