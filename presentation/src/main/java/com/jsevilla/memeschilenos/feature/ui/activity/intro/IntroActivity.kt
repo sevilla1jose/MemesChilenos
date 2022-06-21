@@ -3,6 +3,7 @@ package com.jsevilla.memeschilenos.feature.ui.activity.intro
 import android.Manifest
 import android.content.Intent
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.fragment.app.Fragment
 import com.github.appintro.AppIntro2
 import com.github.appintro.AppIntroCustomLayoutFragment.Companion.newInstance
@@ -13,6 +14,15 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class IntroActivity : AppIntro2() {
     private val introViewModel: IntroViewModel by viewModel()
+
+    override fun onStart() {
+        super.onStart()
+        if (introViewModel.getDayNight()) {
+            delegate.localNightMode = AppCompatDelegate.MODE_NIGHT_YES
+        } else {
+            delegate.localNightMode = AppCompatDelegate.MODE_NIGHT_NO
+        }
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

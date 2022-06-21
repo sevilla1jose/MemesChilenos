@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.Window
 import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 
@@ -18,9 +19,16 @@ abstract class BaseActivity<T : ViewDataBinding, out V : BaseViewModel> : AppCom
 
     abstract val getBindingVariable: Int
 
+    abstract val isDayNight: Boolean
+
     override fun onStart() {
         super.onStart()
         onStartActivity()
+        if (isDayNight) {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+        } else {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+        }
     }
 
     override fun onResume() {

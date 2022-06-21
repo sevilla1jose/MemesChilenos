@@ -11,5 +11,11 @@
     <string name="txtFinishIntro">!Todo Listo!</string>
     <string name="txtDetailsFinishIntro">Estamos listos para que uses Memes Chilenos, \n ¡Vive tu experiencia Wow!</string>
 
+    <string name="txtDetailsSearch">¿Que deseas buscar?</string>
+
     <string name="btnToAccept">Aceptar</string>
+
+    <string name="menu_home">Inicio</string>
+    <string name="menu_search">Buscar</string>
+    <string name="menu_settings">Ajustes</string>
 </resources>

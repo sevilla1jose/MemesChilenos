@@ -7,13 +7,18 @@
         <item name="android:src">@drawable/logo_name</item>
     </style>
 
-    <style name="textTitleBold20">
+    <style name="logoHomeImage">
+        <item name="android:layout_width">@dimen/dp120</item>
+        <item name="android:layout_height">@dimen/dp40</item>
+        <item name="android:src">@drawable/logo_name</item>
+    </style>
+
+    <style name="textSubTitleNormal14">
         <item name="android:layout_width">0dp</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:fontFamily">@font/roboto_bold</item>
-        <item name="android:gravity">center|center_vertical|center_horizontal</item>
-        <item name="android:textSize">@dimen/sp20</item>
-        <item name="android:textStyle">bold</item>
+        <item name="android:fontFamily">@font/roboto_regular</item>
+        <item name="android:textSize">@dimen/sp14</item>
+        <item name="android:textStyle">normal</item>
         <item name="android:textColor">@color/black</item>
     </style>
 
@@ -27,6 +32,45 @@
         <item name="android:textColor">@color/black</item>
     </style>
 
+    <style name="textVersionBold18">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:fontFamily">@font/roboto_bold</item>
+        <item name="android:gravity">center|center_vertical|center_horizontal</item>
+        <item name="android:textSize">@dimen/sp18</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/teal_200</item>
+    </style>
+
+    <style name="textTitleBold18">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:fontFamily">@font/roboto_bold</item>
+        <item name="android:textSize">@dimen/sp18</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="textTitleBold20">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:fontFamily">@font/roboto_bold</item>
+        <item name="android:gravity">center|center_vertical|center_horizontal</item>
+        <item name="android:textSize">@dimen/sp20</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="textTitleBold24">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:fontFamily">@font/roboto_bold</item>
+        <item name="android:gravity">center|center_vertical|center_horizontal</item>
+        <item name="android:textSize">@dimen/sp24</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
     <style name="textTitleBold28">
         <item name="android:layout_width">0dp</item>
         <item name="android:layout_height">wrap_content</item>
@@ -35,6 +79,21 @@
         <item name="android:textSize">@dimen/sp28</item>
         <item name="android:textStyle">bold</item>
         <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="Widget.App.Switch" parent="Widget.MaterialComponents.CompoundButton.Switch">
+        <item name="materialThemeOverlay">@style/ThemeOverlay.App.Switch</item>
+    </style>
+
+    <style name="ThemeOverlay.App.Switch" parent="">
+        <item name="colorOnSurface">@color/purple_200</item>
+        <item name="colorSecondary">@color/purple_700</item>
+    </style>
+
+    <style name="bottomNavigationStyle">
+        <item name="android:layout_width">@dimen/dp0</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">@drawable/bg_white_rounded</item>
     </style>
 
     <style name="buttonPrimary">
@@ -47,5 +106,21 @@
         <item name="android:gravity">center</item>
         <item name="android:textColor">@color/white</item>
         <item name="android:textAllCaps">false</item>
+    </style>
+
+    <style name="CustomBottomSheetDialog" parent="@style/ThemeOverlay.MaterialComponents.BottomSheetDialog">
+        <item name="bottomSheetStyle">@style/CustomBottomSheet</item>
+    </style>
+
+    <style name="CustomBottomSheet" parent="Widget.MaterialComponents.BottomSheet">
+        <item name="shapeAppearanceOverlay">@style/CustomShapeAppearanceBottomSheetDialog</item>
+    </style>
+
+    <style name="CustomShapeAppearanceBottomSheetDialog" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSizeTopRight">@dimen/dp24</item>
+        <item name="cornerSizeTopLeft">@dimen/dp24</item>
+        <item name="cornerSizeBottomRight">@dimen/dp0</item>
+        <item name="cornerSizeBottomLeft">@dimen/dp0</item>
     </style>
 </resources>

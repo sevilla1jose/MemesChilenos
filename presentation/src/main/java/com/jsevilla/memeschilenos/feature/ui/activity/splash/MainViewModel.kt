@@ -45,4 +45,6 @@ class MainViewModel(
             }
         }
     }
+
+    fun getDayNight(): Boolean = introUseCase.getDayNight()
 }

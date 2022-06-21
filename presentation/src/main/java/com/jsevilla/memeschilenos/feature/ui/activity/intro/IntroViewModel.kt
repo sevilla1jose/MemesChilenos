@@ -15,4 +15,6 @@ class IntroViewModel(
     }
 
     fun setIntroFinish() = introUseCase.setIntroFinish()
+
+    fun getDayNight(): Boolean = introUseCase.getDayNight()
 }

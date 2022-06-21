@@ -17,6 +17,7 @@ val preferencesModule = module {
 private const val SECURE_PREFS_FILE_KEY = "com.jsevilla.memeschilenos.data.secure_preferences"
 
 const val PREF_KEY_INTRO_VALUE = "key_intro_value"
+const val PREF_KEY_DAY_OR_NIGHT_VALUE = "key_day_or_night_value"
 
 private fun provideSecurePreferences(app: Application): SharedPreferences =
     app.getSharedPreferences(SECURE_PREFS_FILE_KEY, Context.MODE_PRIVATE)

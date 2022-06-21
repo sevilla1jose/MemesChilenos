@@ -28,6 +28,9 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
     override val getBindingVariable: Int
         get() = BR.mainViewModel
 
+    override val isDayNight: Boolean
+        get() = getViewModel.getDayNight()
+
     override fun onStartActivity() {
         observeViewModel()
 
