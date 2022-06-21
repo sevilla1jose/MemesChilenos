@@ -1,18 +1,27 @@
 package com.jsevilla.memeschilenos.feature.ui.activity.intro
 
 import android.Manifest
-import android.content.Intent
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.fragment.app.Fragment
 import com.github.appintro.AppIntro2
 import com.github.appintro.AppIntroCustomLayoutFragment.Companion.newInstance
 import com.github.appintro.AppIntroPageTransformerType
 import com.jsevilla.memeschilenos.R
-import com.jsevilla.memeschilenos.feature.ui.activity.home.HomeActivity
+import com.jsevilla.memeschilenos.utils.recreateActivity
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class IntroActivity : AppIntro2() {
     private val introViewModel: IntroViewModel by viewModel()
+
+    override fun onStart() {
+        super.onStart()
+        if (introViewModel.getDayNight()) {
+            delegate.localNightMode = AppCompatDelegate.MODE_NIGHT_YES
+        } else {
+            delegate.localNightMode = AppCompatDelegate.MODE_NIGHT_NO
+        }
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -55,10 +64,7 @@ class IntroActivity : AppIntro2() {
     public override fun onDonePressed(currentFragment: Fragment?) {
         super.onDonePressed(currentFragment)
         introViewModel.setIntroFinish()
-        val intent = Intent(this@IntroActivity, HomeActivity::class.java)
-        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
-        startActivity(intent)
-        overridePendingTransition(R.anim.fade_in, R.anim.fade_out)
+        recreateActivity(this, 1)
     }
 
     override fun onUserDeniedPermission(permissionName: String) {

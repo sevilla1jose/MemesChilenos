@@ -11,6 +11,9 @@ ext {
     // Navigation
     def nav_version = '2.4.2'
 
+    // Android X Legacy
+    def legacyVersion = '1.0.0'
+
     // Android Dx
     def lifecycleVersion = '2.4.1'
 
@@ -48,6 +51,7 @@ ext {
             constraintLayout : "androidx.constraintlayout:constraintlayout:$constraintLayout",
             appCompat        : "androidx.appcompat:appcompat:$appcompat",
             androidCore      : "androidx.core:core-ktx:$core",
+            legacy           : "androidx.legacy:legacy-support-v4:$legacyVersion",
             viewModel        : "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycleVersion",
             livedata         : "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycleVersion",
             material         : "com.google.android.material:material:$materialVersion",

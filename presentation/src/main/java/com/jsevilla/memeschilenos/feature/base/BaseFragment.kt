@@ -1,6 +1,7 @@
 package com.jsevilla.memeschilenos.feature.base
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -41,8 +42,7 @@ abstract class BaseFragment<T : ViewDataBinding, out V : BaseViewModel>(
         viewDataBinding.setVariable(getBindingVariable, _viewModel)
         viewDataBinding.lifecycleOwner = this.viewLifecycleOwner
         viewDataBinding.executePendingBindings()
-        if (savedInstanceState == null)
-            onViewCreatedFragment(viewDataBinding)
+        onViewCreatedFragment(viewDataBinding)
     }
 
     override fun onPause() {

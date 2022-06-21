@@ -8,4 +8,6 @@ class IntroRepositoryImpl(
 ) : IntroRepository {
     override fun getIntro(): Boolean = preferences.getIntroValue()
     override fun setIntroFinish() = preferences.setIntroFinish()
+    override fun getDayNight(): Boolean = preferences.getDayNight()
+    override fun setDayNight(isDayOrNight: Boolean) = preferences.setDayNight(isDayOrNight)
 }
