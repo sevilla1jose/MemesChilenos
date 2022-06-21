@@ -7,8 +7,7 @@ import com.jsevilla.memeschilenos.feature.base.BaseBottomSheet
 class MessageBottomSheet(
     private val title: String,
     private val subTitle: String,
-    private val textButton: String,
-    val callClick: () -> Unit
+    private val textButton: String
 ) : BaseBottomSheet<BottomSheetMessageBinding>() {
 
     override val getLayoutId: Int
@@ -19,7 +18,6 @@ class MessageBottomSheet(
         viewDataBinding.txtSubTitle.text = subTitle
         viewDataBinding.btnOk.text = textButton
         viewDataBinding.btnOk.setOnClickListener {
-            callClick()
             dismiss()
         }
     }

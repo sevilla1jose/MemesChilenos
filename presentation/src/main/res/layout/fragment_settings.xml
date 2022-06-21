@@ -62,28 +62,38 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/txtDarkOrLight" />
 
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/txtComents"
-                style="@style/textTitleBold18"
-                android:layout_width="wrap_content"
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/layoutComments"
+                android:layout_width="@dimen/dp0"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/dp20"
                 android:layout_marginTop="@dimen/dp24"
-                android:text="Comentario"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/txtDetailsDarkOrLight" />
-
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/txtDetailsComents"
-                style="@style/textSubTitleNormal14"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/dp20"
-                android:layout_marginTop="@dimen/dp8"
-                android:text="Déjanos tus comentarios para conocer tu experiencia y mejorar cada día más"
                 app:layout_constraintEnd_toEndOf="@+id/txtDetailsDarkOrLight"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/txtComents" />
+                app:layout_constraintTop_toBottomOf="@+id/txtDetailsDarkOrLight">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/txtComments"
+                    style="@style/textTitleBold18"
+                    android:layout_width="@dimen/dp0"
+                    android:layout_height="wrap_content"
+                    android:text="@string/txtComments"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/txtDetailsComments"
+                    style="@style/textSubTitleNormal14"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp8"
+                    android:text="@string/txtDetailsComments"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/txtComments" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/txtTermsAndCond"
@@ -94,7 +104,7 @@
                 android:layout_marginTop="@dimen/dp24"
                 android:text="Términos y Condiciones"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/txtDetailsComents" />
+                app:layout_constraintTop_toBottomOf="@+id/layoutComments" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/txtDetailsTermsAndCond"
@@ -110,14 +120,13 @@
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/txtVersionApp"
-                style="@style/textVersionBold18"
+                style="@style/textVersionBold14"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/dp20"
                 android:layout_marginEnd="@dimen/dp20"
                 android:layout_marginBottom="@dimen/dp48"
                 android:gravity="center|center_horizontal|center_vertical"
-                android:text="Versión 1.0.0"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent" />

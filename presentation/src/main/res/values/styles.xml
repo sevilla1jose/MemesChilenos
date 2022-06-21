@@ -32,12 +32,12 @@
         <item name="android:textColor">@color/black</item>
     </style>
 
-    <style name="textVersionBold18">
+    <style name="textVersionBold14">
         <item name="android:layout_width">0dp</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:fontFamily">@font/roboto_bold</item>
         <item name="android:gravity">center|center_vertical|center_horizontal</item>
-        <item name="android:textSize">@dimen/sp18</item>
+        <item name="android:textSize">@dimen/sp14</item>
         <item name="android:textStyle">bold</item>
         <item name="android:textColor">@color/teal_200</item>
     </style>
@@ -118,6 +118,7 @@
 
     <style name="CustomShapeAppearanceBottomSheetDialog" parent="">
         <item name="cornerFamily">rounded</item>
+        <item name="android:background">@drawable/bg_white_rounded_night</item>
         <item name="cornerSizeTopRight">@dimen/dp24</item>
         <item name="cornerSizeTopLeft">@dimen/dp24</item>
         <item name="cornerSizeBottomRight">@dimen/dp0</item>
