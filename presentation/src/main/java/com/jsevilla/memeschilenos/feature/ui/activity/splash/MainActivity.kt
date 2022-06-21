@@ -14,6 +14,7 @@ import com.jsevilla.memeschilenos.databinding.ActivityMainBinding
 import com.jsevilla.memeschilenos.feature.base.BaseActivity
 import com.jsevilla.memeschilenos.feature.ui.activity.home.HomeActivity
 import com.jsevilla.memeschilenos.feature.ui.activity.intro.IntroActivity
+import com.jsevilla.memeschilenos.utils.recreateActivity
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
@@ -69,15 +70,9 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
     private fun observeViewModel() {
         getViewModel.initPage.observe(this) {
             if (it) {
-                val intent = Intent(this@MainActivity, HomeActivity::class.java)
-                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
-                startActivity(intent)
-                overridePendingTransition(R.anim.fade_in, R.anim.fade_out)
+                recreateActivity(this, 1)
             } else {
-                val intent = Intent(this@MainActivity, IntroActivity::class.java)
-                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
-                startActivity(intent)
-                overridePendingTransition(R.anim.fade_in, R.anim.fade_out)
+                recreateActivity(this)
             }
         }
     }

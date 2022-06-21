@@ -33,7 +33,7 @@ class LegalActivity : BaseActivity<ActivityLegalBinding, LegalViewModel>() {
         savedInstanceState: Bundle?
     ) {
         viewDataBinding.imgBack.setOnClickListener {
-            recreateActivity(activity = this)
+            recreateActivity(activity = this, 3)
         }
     }
 

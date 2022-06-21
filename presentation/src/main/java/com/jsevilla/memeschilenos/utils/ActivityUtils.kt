@@ -9,9 +9,16 @@ import com.jsevilla.memeschilenos.feature.ui.activity.home.HomeActivity
 import com.jsevilla.memeschilenos.feature.ui.activity.intro.IntroActivity
 import com.jsevilla.memeschilenos.feature.ui.activity.legal.LegalActivity
 
-fun AppCompatActivity.recreateActivity(activity: AppCompatActivity) {
+fun AppCompatActivity.recreateActivity(activity: AppCompatActivity, layout: Int) {
     val intent = Intent(activity, HomeActivity::class.java)
-    intent.putExtra("layout", 3)
+    intent.putExtra("layout", layout)
+    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
+    startActivity(intent)
+    activity.overridePendingTransition(R.anim.fade_in, R.anim.fade_out)
+}
+
+fun AppCompatActivity.recreateActivity(activity: AppCompatActivity) {
+    val intent = Intent(activity, IntroActivity::class.java)
     intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
     startActivity(intent)
     activity.overridePendingTransition(R.anim.fade_in, R.anim.fade_out)
@@ -19,7 +26,6 @@ fun AppCompatActivity.recreateActivity(activity: AppCompatActivity) {
 
 fun Fragment.goToTermsAndCond(activity: FragmentActivity) {
     val intent = Intent(activity, LegalActivity::class.java)
-    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
     startActivity(intent)
     activity.overridePendingTransition(R.anim.fade_in, R.anim.fade_out)
 }
