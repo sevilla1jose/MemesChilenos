@@ -1,15 +1,15 @@
 package com.jsevilla.memeschilenos.feature.ui.fragment.settings
 
-import android.content.Intent
 import androidx.appcompat.app.AppCompatDelegate
 import com.jsevilla.memeschilenos.BR
 import com.jsevilla.memeschilenos.BuildConfig
 import com.jsevilla.memeschilenos.R
 import com.jsevilla.memeschilenos.databinding.FragmentSettingsBinding
 import com.jsevilla.memeschilenos.feature.base.BaseFragment
-import com.jsevilla.memeschilenos.feature.ui.activity.home.HomeActivity
 import com.jsevilla.memeschilenos.feature.ui.bottomsheet.comments.CommentsBottomSheet
 import com.jsevilla.memeschilenos.feature.ui.bottomsheet.message.MessageBottomSheet
+import com.jsevilla.memeschilenos.utils.goToTermsAndCond
+import com.jsevilla.memeschilenos.utils.recreateActivity
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class SettingsFragment : BaseFragment<FragmentSettingsBinding, SettingsFragmentViewModel>(
@@ -40,7 +40,11 @@ class SettingsFragment : BaseFragment<FragmentSettingsBinding, SettingsFragmentV
             )
             bottomSheet.show(childFragmentManager, "viewDataBinding.CommentsBottomSheet")
         }
-        viewDataBinding.txtVersionApp.text = getString(R.string.appVersion, BuildConfig.VERSION_NAME)
+        viewDataBinding.layoutTermsAndCond.setOnClickListener {
+            goToTermsAndCond(activity!!)
+        }
+        viewDataBinding.txtVersionApp.text =
+            getString(R.string.appVersion, BuildConfig.VERSION_NAME)
     }
 
     private fun onClickButtonComments(): (comments: String) -> Unit {
@@ -64,14 +68,6 @@ class SettingsFragment : BaseFragment<FragmentSettingsBinding, SettingsFragmentV
         } else {
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
         }
-        recreateActivity()
-    }
-
-    private fun recreateActivity() {
-        val intent = Intent(context, HomeActivity::class.java)
-        intent.putExtra("layout", 3)
-        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
-        startActivity(intent)
-        activity?.overridePendingTransition(R.anim.fade_in, R.anim.fade_out)
+        recreateActivity(activity!!)
     }
 }
