@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">Memes Chilenos</string>
     <string name="app_name_intro">Intro Memes Chilenos</string>
+    <string name="appVersion">Version %s</string>
 
     <string name="txtSave">Guardar Información</string>
     <string name="txtWelcome">!Bienvenido!</string>
@@ -12,6 +13,15 @@
     <string name="txtDetailsFinishIntro">Estamos listos para que uses Memes Chilenos, \n ¡Vive tu experiencia Wow!</string>
 
     <string name="txtDetailsSearch">¿Que deseas buscar?</string>
+
+    <string name="txtComments">Comentario</string>
+    <string name="txtDetailsComments">Déjanos tus comentarios para conocer tu experiencia y mejorar cada día más</string>
+    <string name="txtEmptyCommets">Debes ingresar un comentario</string>
+    <string name="txtLengthComments">Debes ingresar al menos 8 caracteres</string>
+    <string name="txtYourComments">Déjanos tu comentario...</string>
+
+    <string name="txtThank">¡Muchas Gracias!</string>
+    <string name="txtDetailsThank">Hemos guardado su comentario y lo tendremos en cuenta para nuestra próxima actualización.</string>
 
     <string name="btnToAccept">Aceptar</string>
 

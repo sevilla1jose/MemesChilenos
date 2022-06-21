@@ -1,14 +1,15 @@
 package com.jsevilla.memeschilenos.feature.ui.fragment.settings
 
 import android.content.Intent
-import android.util.Log
 import androidx.appcompat.app.AppCompatDelegate
-import com.google.android.material.switchmaterial.SwitchMaterial
 import com.jsevilla.memeschilenos.BR
+import com.jsevilla.memeschilenos.BuildConfig
 import com.jsevilla.memeschilenos.R
 import com.jsevilla.memeschilenos.databinding.FragmentSettingsBinding
 import com.jsevilla.memeschilenos.feature.base.BaseFragment
 import com.jsevilla.memeschilenos.feature.ui.activity.home.HomeActivity
+import com.jsevilla.memeschilenos.feature.ui.bottomsheet.comments.CommentsBottomSheet
+import com.jsevilla.memeschilenos.feature.ui.bottomsheet.message.MessageBottomSheet
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class SettingsFragment : BaseFragment<FragmentSettingsBinding, SettingsFragmentViewModel>(
@@ -29,6 +30,27 @@ class SettingsFragment : BaseFragment<FragmentSettingsBinding, SettingsFragmentV
         viewDataBinding.switchDarkOrLight.setOnCheckedChangeListener { _, isChecked ->
             getViewModel.setDayNight(isChecked)
             setActivityDayOrNight()
+        }
+        viewDataBinding.layoutComments.setOnClickListener {
+            val bottomSheet = CommentsBottomSheet(
+                title = getString(R.string.txtComments),
+                textEdit = getString(R.string.txtYourComments),
+                textButton = getString(R.string.btnToAccept),
+                callback = onClickButtonComments()
+            )
+            bottomSheet.show(childFragmentManager, "viewDataBinding.CommentsBottomSheet")
+        }
+        viewDataBinding.txtVersionApp.text = getString(R.string.appVersion, BuildConfig.VERSION_NAME)
+    }
+
+    private fun onClickButtonComments(): (comments: String) -> Unit {
+        return { _ ->
+            val bottomSheet = MessageBottomSheet(
+                title = getString(R.string.txtThank),
+                subTitle = getString(R.string.txtDetailsThank),
+                textButton = getString(R.string.btnToAccept)
+            )
+            bottomSheet.show(childFragmentManager, "viewDataBinding.MessageBottomSheet")
         }
     }
 
