@@ -68,6 +68,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/dp20"
                 android:layout_marginTop="@dimen/dp24"
+                android:background="?attr/selectableItemBackground"
+                android:clickable="true"
+                android:focusable="true"
                 app:layout_constraintEnd_toEndOf="@+id/txtDetailsDarkOrLight"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/txtDetailsDarkOrLight">
@@ -95,28 +98,44 @@
                     app:layout_constraintTop_toBottomOf="@+id/txtComments" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/txtTermsAndCond"
-                style="@style/textTitleBold18"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/dp20"
-                android:layout_marginTop="@dimen/dp24"
-                android:text="Términos y Condiciones"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/layoutComments" />
-
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/txtDetailsTermsAndCond"
-                style="@style/textSubTitleNormal14"
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/layoutTermsAndCond"
                 android:layout_width="@dimen/dp0"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/dp20"
-                android:layout_marginTop="@dimen/dp8"
-                android:text="Consulta nuestros términos y condiciones"
-                app:layout_constraintEnd_toEndOf="@+id/txtDetailsComents"
+                android:layout_marginTop="@dimen/dp24"
+                android:background="?attr/selectableItemBackground"
+                android:clickable="true"
+                android:focusable="true"
+                app:layout_constraintEnd_toEndOf="@+id/txtDetailsDarkOrLight"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/txtTermsAndCond" />
+                app:layout_constraintTop_toBottomOf="@+id/layoutComments">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/txtTermsAndCond"
+                    style="@style/textTitleBold18"
+                    android:layout_width="@dimen/dp0"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/dp0"
+                    android:layout_marginTop="@dimen/dp0"
+                    android:layout_marginEnd="@dimen/dp0"
+                    android:text="@string/txtTermsAndCond"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/txtDetailsTermsAndCond"
+                    style="@style/textSubTitleNormal14"
+                    android:layout_width="@dimen/dp0"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp8"
+                    android:text="Consulta nuestros términos y condiciones"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/txtTermsAndCond" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/txtVersionApp"

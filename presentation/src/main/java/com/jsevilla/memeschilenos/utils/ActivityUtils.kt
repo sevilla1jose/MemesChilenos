@@ -1,29 +1,33 @@
 package com.jsevilla.memeschilenos.utils
 
-import android.annotation.SuppressLint
-import android.view.MotionEvent
-import android.widget.EditText
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
-import androidx.navigation.NavController
-import androidx.navigation.fragment.NavHostFragment
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentActivity
+import com.jsevilla.memeschilenos.R
+import com.jsevilla.memeschilenos.feature.ui.activity.home.HomeActivity
+import com.jsevilla.memeschilenos.feature.ui.activity.intro.IntroActivity
+import com.jsevilla.memeschilenos.feature.ui.activity.legal.LegalActivity
 
-fun AppCompatActivity.findNavControllerFromFragmentContainer(id: Int): NavController {
-    val fragment = supportFragmentManager.findFragmentById(id)
-    check(fragment is NavHostFragment) { ("Activity $this does not have a NavHostFragment") }
-    return fragment.navController
+fun AppCompatActivity.recreateActivity(activity: AppCompatActivity) {
+    val intent = Intent(activity, HomeActivity::class.java)
+    intent.putExtra("layout", 3)
+    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
+    startActivity(intent)
+    activity.overridePendingTransition(R.anim.fade_in, R.anim.fade_out)
 }
 
-fun EditText.onRightDrawableClicked(onClicked: (view: EditText) -> Unit) {
-    this.setOnTouchListener { v, event ->
-        var hasConsumed = false
-        if (v is EditText) {
-            if (event.x >= v.width - v.totalPaddingRight) {
-                if (event.action == MotionEvent.ACTION_UP) {
-                    onClicked(this)
-                }
-                hasConsumed = true
-            }
-        }
-        hasConsumed
-    }
+fun Fragment.goToTermsAndCond(activity: FragmentActivity) {
+    val intent = Intent(activity, LegalActivity::class.java)
+    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
+    startActivity(intent)
+    activity.overridePendingTransition(R.anim.fade_in, R.anim.fade_out)
+}
+
+fun Fragment.recreateActivity(activity: FragmentActivity) {
+    val intent = Intent(activity, HomeActivity::class.java)
+    intent.putExtra("layout", 3)
+    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
+    startActivity(intent)
+    activity.overridePendingTransition(R.anim.fade_in, R.anim.fade_out)
 }
