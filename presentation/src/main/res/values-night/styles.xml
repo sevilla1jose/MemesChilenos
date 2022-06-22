@@ -19,6 +19,15 @@
         <item name="android:src">@drawable/ic_back_night</item>
     </style>
 
+    <style name="textTextNormal12">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:fontFamily">@font/roboto_light</item>
+        <item name="android:textSize">@dimen/sp12</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
     <style name="textSubTitleNormal14">
         <item name="android:layout_width">0dp</item>
         <item name="android:layout_height">wrap_content</item>
@@ -63,6 +72,24 @@
         <item name="android:fontFamily">@font/roboto_bold</item>
         <item name="android:gravity">center|center_vertical|center_horizontal</item>
         <item name="android:textSize">@dimen/sp20</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="textTextBold18">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:fontFamily">@font/roboto_bold</item>
+        <item name="android:textSize">@dimen/sp18</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="textTextBold24">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:fontFamily">@font/roboto_bold</item>
+        <item name="android:textSize">@dimen/sp24</item>
         <item name="android:textStyle">bold</item>
         <item name="android:textColor">@color/white</item>
     </style>
@@ -129,5 +156,11 @@
         <item name="cornerSizeTopLeft">@dimen/dp24</item>
         <item name="cornerSizeBottomRight">@dimen/dp0</item>
         <item name="cornerSizeBottomLeft">@dimen/dp0</item>
+    </style>
+
+    <style name="ImageIconAction">
+        <item name="android:layout_width">@dimen/dp28</item>
+        <item name="android:layout_height">@dimen/dp28</item>
+        <item name="android:tint">@color/sub_title</item>
     </style>
 </resources>

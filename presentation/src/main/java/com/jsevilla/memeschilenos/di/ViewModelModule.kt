@@ -14,7 +14,7 @@ val viewModelModule = module {
     viewModel { MainViewModel(get()) }
     viewModel { IntroViewModel(get()) }
     viewModel { HomeViewModel(get()) }
-    viewModel { HomeFragmentViewModel() }
+    viewModel { HomeFragmentViewModel(get()) }
     viewModel { SearchFragmentViewModel() }
     viewModel { SettingsFragmentViewModel(get()) }
     viewModel { LegalViewModel(get()) }

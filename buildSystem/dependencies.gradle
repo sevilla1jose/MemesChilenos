@@ -44,6 +44,9 @@ ext {
     // AppIntro AndroidX
     def appIntroVersion = '6.2.0'
 
+    // Coil - An image loading library for Android backed by Kotlin Coroutines
+    def ciolVersion = '2.1.0'
+
     /*
      * Presentation dependencies
      */
@@ -58,7 +61,8 @@ ext {
             koin             : "io.insert-koin:koin-android:$koinVersion",
             coroutinesCore   : "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutinesVersion",
             coroutinesAndroid: "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutinesVersion",
-            appIntro         : "com.github.AppIntro:AppIntro:$appIntroVersion"
+            appIntro         : "com.github.AppIntro:AppIntro:$appIntroVersion",
+            coil             : "io.coil-kt:coil:$ciolVersion"
     ]
 
     compileLifecycleDependencies = [
