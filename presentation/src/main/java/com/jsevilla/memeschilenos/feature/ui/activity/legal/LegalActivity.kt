@@ -1,6 +1,5 @@
 package com.jsevilla.memeschilenos.feature.ui.activity.legal
 
-import android.app.Activity
 import android.os.Bundle
 import com.jsevilla.memeschilenos.R
 import com.jsevilla.memeschilenos.BR

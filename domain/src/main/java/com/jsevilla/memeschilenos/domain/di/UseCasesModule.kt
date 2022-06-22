@@ -1,8 +1,9 @@
 package com.jsevilla.memeschilenos.domain.di
 
-import com.jsevilla.memeschilenos.domain.usecase.IntroUseCase
+import com.jsevilla.memeschilenos.domain.usecase.*
 import org.koin.dsl.module
 
 val useCasesModule = module {
-    single { IntroUseCase(get()) }
+    factory { IntroUseCase(get()) }
+    factory { GetListMemesChile(get()) }
 }

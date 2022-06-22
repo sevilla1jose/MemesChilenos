@@ -5,6 +5,8 @@
 
     <data>
 
+        <import type="android.view.View" />
+
         <variable
             name="homeFragmentViewModel"
             type="com.jsevilla.memeschilenos.feature.ui.fragment.home.HomeFragmentViewModel" />
@@ -32,23 +34,85 @@
                     style="@style/logoHomeImage"
                     android:layout_marginStart="@dimen/dp20"
                     android:layout_marginTop="@dimen/dp16"
-                    android:layout_marginBottom="@dimen/dp16"
+                    android:layout_marginBottom="@dimen/dp8"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:layout_width="match_parent"
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/constraintLayoutRecyclerView"
+                android:layout_width="@dimen/dp0"
                 android:layout_height="@dimen/dp0"
-                android:layout_marginStart="@dimen/dp0"
-                android:layout_marginTop="@dimen/dp0"
-                android:layout_marginEnd="@dimen/dp0"
-                android:layout_marginBottom="@dimen/dp0"
+                android:visibility="@{safeUnbox(homeFragmentViewModel.showEmptyView) ? View.GONE : View.VISIBLE}"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
+                app:layout_constraintTop_toBottomOf="@+id/constraintLayout"
+                tools:visibility="visible">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerViewMemes"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp0"
+                    android:visibility="@{safeUnbox(homeFragmentViewModel.isRefreshing) ? View.VISIBLE : (safeUnbox(homeFragmentViewModel.isLoading) ? View.GONE : View.VISIBLE)}"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    tools:itemCount="50"
+                    tools:listitem="@layout/item_layout_memes" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/constraintLayoutEmpty"
+                android:layout_width="@dimen/dp0"
+                android:layout_height="@dimen/dp0"
+                android:visibility="@{safeUnbox(homeFragmentViewModel.showEmptyView) ? View.VISIBLE : View.GONE}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                tools:visibility="gone"
+                app:layout_constraintTop_toBottomOf="@+id/constraintLayout">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/appCompatImageView"
+                    android:layout_width="@dimen/dp250"
+                    android:layout_height="@dimen/dp250"
+                    android:layout_marginBottom="@dimen/dp120"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/empty" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    style="@style/textTitleBold24"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp24"
+                    android:text="@string/txtEmptyData"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/appCompatImageView" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/layout_loading_background"
+                android:gravity="center|center_horizontal|center_vertical"
+                android:visibility="@{safeUnbox(homeFragmentViewModel.isRefreshing) ? View.GONE : (safeUnbox(homeFragmentViewModel.isLoading) ? View.VISIBLE : View.GONE)}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:visibility="gone">
+
+                <ProgressBar
+                    android:id="@+id/progress_bar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp8"
+                    android:indeterminate="true" />
+            </androidx.appcompat.widget.LinearLayoutCompat>
         </androidx.constraintlayout.widget.ConstraintLayout>
     </FrameLayout>
 </layout>
