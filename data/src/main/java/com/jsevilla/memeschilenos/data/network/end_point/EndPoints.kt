@@ -11,4 +11,10 @@ interface EndPoints {
     suspend fun getListMemes(
         @Query("limit") limit: Int
     ): Response<BaseResponse<MemeResponse>>
+
+    @GET("search.json")
+    suspend fun getListSearchMemes(
+        @Query("q") data: String,
+        @Query("limit") limit: Int
+    ): Response<BaseResponse<MemeResponse>>
 }

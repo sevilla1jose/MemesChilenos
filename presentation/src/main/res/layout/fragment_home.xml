@@ -57,6 +57,10 @@
                     android:layout_height="@dimen/dp0"
                     android:visibility="@{safeUnbox(homeFragmentViewModel.isRefreshing) ? View.VISIBLE : (safeUnbox(homeFragmentViewModel.isLoading) ? View.GONE : View.VISIBLE)}"
                     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
                     tools:itemCount="50"
                     tools:listitem="@layout/item_layout_memes" />
             </androidx.constraintlayout.widget.ConstraintLayout>

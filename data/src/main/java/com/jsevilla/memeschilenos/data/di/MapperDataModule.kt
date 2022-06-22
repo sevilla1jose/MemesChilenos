@@ -1,9 +1,9 @@
 package com.jsevilla.memeschilenos.data.di
 
-import com.jsevilla.memeschilenos.data.network.mapper.home.HomeMapper
-import com.jsevilla.memeschilenos.data.network.mapper.home.HomeMapperImpl
+import com.jsevilla.memeschilenos.data.network.mapper.memes.MemesMapper
+import com.jsevilla.memeschilenos.data.network.mapper.memes.MemesMapperImpl
 import org.koin.dsl.module
 
 val mapperDataModule = module {
-    single<HomeMapper> { HomeMapperImpl(get()) }
+    single<MemesMapper> { MemesMapperImpl(get()) }
 }

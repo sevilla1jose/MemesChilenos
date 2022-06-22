@@ -5,6 +5,8 @@
 
     <data>
 
+        <import type="android.view.View" />
+
         <variable
             name="searchFragmentViewModel"
             type="com.jsevilla.memeschilenos.feature.ui.fragment.search.SearchFragmentViewModel" />
@@ -15,54 +17,125 @@
         android:layout_height="match_parent"
         tools:context=".feature.ui.fragment.search.SearchFragment">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/constraintLayout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+       <androidx.constraintlayout.widget.ConstraintLayout
+           android:layout_width="match_parent"
+           android:layout_height="match_parent">
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/textInputLayoutSearch"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                android:layout_width="@dimen/dp0"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/dp20"
-                android:layout_marginTop="@dimen/dp16"
-                android:layout_marginEnd="@dimen/dp20"
-                app:boxCornerRadiusBottomEnd="@dimen/dp20"
-                app:boxCornerRadiusBottomStart="@dimen/dp20"
-                app:boxCornerRadiusTopEnd="@dimen/dp20"
-                app:boxCornerRadiusTopStart="@dimen/dp20"
-                android:layout_marginBottom="@dimen/dp16"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:startIconDrawable="@drawable/ic_search">
+           <androidx.constraintlayout.widget.ConstraintLayout
+               android:id="@+id/constraintLayout"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               app:layout_constraintEnd_toEndOf="parent"
+               app:layout_constraintStart_toStartOf="parent"
+               app:layout_constraintTop_toTopOf="parent">
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/textInputSearch"
-                    style="@style/textSubTitleNormal14"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="@string/txtDetailsSearch"
-                    android:imeOptions="actionDone"
-                    android:inputType="text" />
-            </com.google.android.material.textfield.TextInputLayout>
-        </androidx.constraintlayout.widget.ConstraintLayout>
+               <com.google.android.material.textfield.TextInputLayout
+                   android:id="@+id/textInputLayoutSearch"
+                   style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                   android:layout_width="@dimen/dp0"
+                   android:layout_height="wrap_content"
+                   android:layout_marginStart="@dimen/dp20"
+                   android:layout_marginTop="@dimen/dp16"
+                   android:layout_marginEnd="@dimen/dp20"
+                   app:boxCornerRadiusBottomEnd="@dimen/dp20"
+                   app:boxCornerRadiusBottomStart="@dimen/dp20"
+                   app:boxCornerRadiusTopEnd="@dimen/dp20"
+                   app:boxCornerRadiusTopStart="@dimen/dp20"
+                   android:layout_marginBottom="@dimen/dp8"
+                   app:layout_constraintBottom_toBottomOf="parent"
+                   app:layout_constraintEnd_toEndOf="parent"
+                   app:layout_constraintStart_toStartOf="parent"
+                   app:layout_constraintTop_toTopOf="parent"
+                   app:startIconDrawable="@drawable/ic_search">
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/dp0"
-            android:layout_marginStart="@dimen/dp0"
-            android:layout_marginTop="@dimen/dp0"
-            android:layout_marginEnd="@dimen/dp0"
-            android:layout_marginBottom="@dimen/dp0"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
+                   <com.google.android.material.textfield.TextInputEditText
+                       android:id="@+id/textInputSearch"
+                       style="@style/textSubTitleNormal14"
+                       android:layout_width="match_parent"
+                       android:layout_height="wrap_content"
+                       android:hint="@string/txtDetailsSearch"
+                       android:imeOptions="actionDone"
+                       android:inputType="text" />
+               </com.google.android.material.textfield.TextInputLayout>
+           </androidx.constraintlayout.widget.ConstraintLayout>
+
+           <androidx.constraintlayout.widget.ConstraintLayout
+               android:id="@+id/constraintLayoutRecyclerView"
+               android:layout_width="@dimen/dp0"
+               android:layout_height="@dimen/dp0"
+               android:visibility="@{safeUnbox(searchFragmentViewModel.showEmptyView) ? View.GONE : View.VISIBLE}"
+               app:layout_constraintBottom_toBottomOf="parent"
+               app:layout_constraintEnd_toEndOf="parent"
+               app:layout_constraintStart_toStartOf="parent"
+               app:layout_constraintTop_toBottomOf="@+id/constraintLayout"
+               tools:visibility="visible">
+
+               <androidx.recyclerview.widget.RecyclerView
+                   android:id="@+id/recyclerViewMemes"
+                   android:layout_width="match_parent"
+                   android:layout_height="@dimen/dp0"
+                   android:visibility="@{safeUnbox(searchFragmentViewModel.isRefreshing) ? View.VISIBLE : (safeUnbox(searchFragmentViewModel.isLoading) ? View.GONE : View.VISIBLE)}"
+                   app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                   app:layout_constraintBottom_toBottomOf="parent"
+                   app:layout_constraintEnd_toEndOf="parent"
+                   app:layout_constraintStart_toStartOf="parent"
+                   app:layout_constraintTop_toTopOf="parent"
+                   tools:itemCount="50"
+                   tools:listitem="@layout/item_layout_memes" />
+           </androidx.constraintlayout.widget.ConstraintLayout>
+
+           <androidx.constraintlayout.widget.ConstraintLayout
+               android:id="@+id/constraintLayoutEmpty"
+               android:layout_width="@dimen/dp0"
+               android:layout_height="@dimen/dp0"
+               android:visibility="@{safeUnbox(searchFragmentViewModel.showEmptyView) ? View.VISIBLE : View.GONE}"
+               app:layout_constraintBottom_toBottomOf="parent"
+               app:layout_constraintEnd_toEndOf="parent"
+               app:layout_constraintStart_toStartOf="parent"
+               tools:visibility="gone"
+               app:layout_constraintTop_toBottomOf="@+id/constraintLayout">
+
+               <androidx.appcompat.widget.AppCompatImageView
+                   android:id="@+id/appCompatImageView"
+                   android:layout_width="@dimen/dp250"
+                   android:layout_height="@dimen/dp250"
+                   android:layout_marginBottom="@dimen/dp120"
+                   app:layout_constraintBottom_toBottomOf="parent"
+                   app:layout_constraintEnd_toEndOf="parent"
+                   app:layout_constraintStart_toStartOf="parent"
+                   app:layout_constraintTop_toTopOf="parent"
+                   app:srcCompat="@drawable/empty" />
+
+               <androidx.appcompat.widget.AppCompatTextView
+                   style="@style/textTitleBold24"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:layout_marginTop="@dimen/dp24"
+                   android:text="@string/txtEmptyData"
+                   app:layout_constraintEnd_toEndOf="parent"
+                   app:layout_constraintStart_toStartOf="parent"
+                   app:layout_constraintTop_toBottomOf="@+id/appCompatImageView" />
+           </androidx.constraintlayout.widget.ConstraintLayout>
+
+           <androidx.appcompat.widget.LinearLayoutCompat
+               android:layout_width="match_parent"
+               android:layout_height="match_parent"
+               android:background="@color/layout_loading_background"
+               android:gravity="center|center_horizontal|center_vertical"
+               android:visibility="@{safeUnbox(searchFragmentViewModel.isRefreshing) ? View.GONE : (safeUnbox(searchFragmentViewModel.isLoading) ? View.VISIBLE : View.GONE)}"
+               app:layout_constraintBottom_toBottomOf="parent"
+               app:layout_constraintEnd_toEndOf="parent"
+               app:layout_constraintStart_toStartOf="parent"
+               app:layout_constraintTop_toTopOf="parent"
+               tools:visibility="gone">
+
+               <ProgressBar
+                   android:id="@+id/progress_bar"
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:layout_marginTop="@dimen/dp8"
+                   android:indeterminate="true" />
+           </androidx.appcompat.widget.LinearLayoutCompat>
+       </androidx.constraintlayout.widget.ConstraintLayout>
     </FrameLayout>
 </layout>

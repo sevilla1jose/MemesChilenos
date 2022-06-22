@@ -9,6 +9,7 @@
         <entry key="presentation/src/main/res/drawable/bg_white_rounded_night.xml" value="0.2005" />
         <entry key="presentation/src/main/res/drawable/ic_back.xml" value="0.1245" />
         <entry key="presentation/src/main/res/drawable/ic_back_night.xml" value="0.1" />
+        <entry key="presentation/src/main/res/drawable/ic_check.xml" value="0.2295" />
         <entry key="presentation/src/main/res/drawable/ic_comment.xml" value="0.2005" />
         <entry key="presentation/src/main/res/drawable/ic_favorite.xml" value="0.2005" />
         <entry key="presentation/src/main/res/drawable/ic_home.xml" value="0.2005" />
@@ -17,18 +18,19 @@
         <entry key="presentation/src/main/res/drawable/ic_settings.xml" value="0.2005" />
         <entry key="presentation/src/main/res/drawable/ic_share.xml" value="0.2005" />
         <entry key="presentation/src/main/res/drawable/ic_star.xml" value="0.2005" />
+        <entry key="presentation/src/main/res/drawable/ic_warning.xml" value="0.2295" />
         <entry key="presentation/src/main/res/drawable/rounded_shape.xml" value="0.2625" />
         <entry key="presentation/src/main/res/drawable/rounded_shape_dark.xml" value="0.2625" />
-        <entry key="presentation/src/main/res/layout/activity_home.xml" value="0.33055555555555555" />
+        <entry key="presentation/src/main/res/layout/activity_home.xml" value="0.33" />
         <entry key="presentation/src/main/res/layout/activity_intro.xml" value="0.346875" />
         <entry key="presentation/src/main/res/layout/activity_legal.xml" value="0.31779257849666986" />
         <entry key="presentation/src/main/res/layout/activity_main.xml" value="0.34791666666666665" />
         <entry key="presentation/src/main/res/layout/activity_splash.xml" value="0.25052083333333336" />
         <entry key="presentation/src/main/res/layout/botoom_sheet_comments.xml" value="0.33055555555555555" />
         <entry key="presentation/src/main/res/layout/bottom_sheet_message.xml" value="0.375" />
-        <entry key="presentation/src/main/res/layout/fragment_home.xml" value="0.32871794871794874" />
+        <entry key="presentation/src/main/res/layout/fragment_home.xml" value="0.1" />
         <entry key="presentation/src/main/res/layout/fragment_message.xml" value="0.34791666666666665" />
-        <entry key="presentation/src/main/res/layout/fragment_search.xml" value="0.34791666666666665" />
+        <entry key="presentation/src/main/res/layout/fragment_search.xml" value="0.2693333333333333" />
         <entry key="presentation/src/main/res/layout/fragment_settings.xml" value="0.33055555555555555" />
         <entry key="presentation/src/main/res/layout/intro_custom_layout1.xml" value="0.346875" />
         <entry key="presentation/src/main/res/layout/intro_custom_layout2.xml" value="0.346875" />

@@ -7,8 +7,11 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
+import com.jsevilla.memeschilenos.network.net.Event
+import com.jsevilla.memeschilenos.network.net.NetworkConnectivityListener
 
-abstract class BaseActivity<T : ViewDataBinding, out V : BaseViewModel> : AppCompatActivity() {
+abstract class BaseActivity<T : ViewDataBinding, out V : BaseViewModel> : AppCompatActivity(),
+    NetworkConnectivityListener {
     private lateinit var viewDataBinding: T
 
     private var _viewModel: V? = null
@@ -59,6 +62,27 @@ abstract class BaseActivity<T : ViewDataBinding, out V : BaseViewModel> : AppCom
         onPauseActivity()
     }
 
+    override fun networkConnectivityChanged(event: Event) {
+        when (event) {
+            is Event.ConnectivityEvent -> {
+                if (event.state.isConnected) {
+                    onConnect()
+                } else {
+                    offConnect()
+                }
+            }
+            else -> {}
+        }
+    }
+
+    private fun onConnect() {
+        onActivityConnect()
+    }
+
+    private fun offConnect() {
+        onActivityOffConnect()
+    }
+
     abstract fun onStartActivity()
 
     abstract fun onResumeActivity()
@@ -66,4 +90,8 @@ abstract class BaseActivity<T : ViewDataBinding, out V : BaseViewModel> : AppCom
     abstract fun onCreateActivity(viewDataBinding: T, savedInstanceState: Bundle?)
 
     abstract fun onPauseActivity()
+
+    abstract fun onActivityConnect()
+
+    abstract fun onActivityOffConnect()
 }
