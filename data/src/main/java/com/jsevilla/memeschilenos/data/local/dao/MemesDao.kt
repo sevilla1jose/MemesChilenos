@@ -8,7 +8,7 @@ import com.jsevilla.memeschilenos.data.local.entity.MemeLocalEntity
 @Dao
 interface MemesDao {
     @Query("SELECT * FROM memes_chile_table")
-    fun getAll(): List<MemeLocalEntity>
+    fun getAll(): MutableList<MemeLocalEntity>
 
     @Insert
     fun insertAll(vararg todo: MemeLocalEntity)

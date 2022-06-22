@@ -5,7 +5,7 @@ import com.jsevilla.memeschilenos.domain.entity.Failure
 import com.jsevilla.memeschilenos.domain.entity.MemeEntity
 import com.jsevilla.memeschilenos.domain.repository.HomeRepository
 
-class HomeUseCase(
+class GetListMemesChile(
     private val homeRepository: HomeRepository
 ) : BaseUseCase<MemeEntity, Any>() {
     override suspend fun run(params: Any): Either<Failure, MemeEntity> =

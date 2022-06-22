@@ -71,6 +71,11 @@ Estas terminos y condiciones se han generado en terminosycondicionesdeusoejemplo
 
     <string name="btnToAccept">Aceptar</string>
 
+    <string name="txtCommentsChildren">%d Comentarios </string>
+    <string name="txtScoreChildren"> - %d Me Gustas</string>
+
+    <string name="txtEmptyData">No se encontraron \n resultados</string>
+
     <string name="menu_home">Inicio</string>
     <string name="menu_search">Buscar</string>
     <string name="menu_settings">Ajustes</string>

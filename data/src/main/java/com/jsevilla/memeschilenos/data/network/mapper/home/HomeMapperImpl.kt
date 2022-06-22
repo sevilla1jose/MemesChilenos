@@ -15,8 +15,8 @@ class HomeMapperImpl(
     override suspend fun getMemesDataToDomain(data: MemeResponse): MemeEntity {
         db.memesDao().deleteAll()
 
-        val listChildren: ArrayList<ChildrenResponse> = arrayListOf()
-        data.children.map { children ->
+        val listChildren: MutableList<ChildrenResponse> = arrayListOf()
+        data.children.forEach { children ->
             if (children.data.linkFlairText == "Shitposting" && children.data.postHint == "image") {
                 listChildren.add(children)
             }
@@ -25,7 +25,7 @@ class HomeMapperImpl(
         return MemeEntity(
             children = listChildren.map {
                 getChildrenDataToDomain(it)
-            }
+            }.toMutableList()
         )
     }
 
@@ -54,12 +54,18 @@ class HomeMapperImpl(
         )
     }
 
-    override suspend fun getListMemesLocalDataToDomain(data: List<MemeLocalEntity>): List<ChildrenEntity> {
-        val listChildren: ArrayList<ChildrenDataEntity> = arrayListOf()
+    override suspend fun getListMemesLocalDataToDomain(data: MutableList<MemeLocalEntity>): MutableList<ChildrenEntity> {
+        val listChildren: MutableList<ChildrenEntity> = mutableListOf()
         data.forEach {
-            listChildren.add(getMemesLocalDataToDomain(it))
+            listChildren.add(getChildrenLocalDataToDomain(it))
         }
-        return listChildren as List<ChildrenEntity>
+        return listChildren
+    }
+
+    override suspend fun getChildrenLocalDataToDomain(localEntity: MemeLocalEntity): ChildrenEntity {
+        return ChildrenEntity(
+            data = getMemesLocalDataToDomain(localEntity)
+        )
     }
 
     override suspend fun getMemesLocalDataToDomain(data: MemeLocalEntity): ChildrenDataEntity {

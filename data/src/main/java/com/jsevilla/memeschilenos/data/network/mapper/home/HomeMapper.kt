@@ -13,6 +13,7 @@ interface HomeMapper {
     suspend fun getChildrenDataToDomain(data: ChildrenResponse): ChildrenEntity
     suspend fun getChildrenDataToDomain(data: ChildrenDataResponse): ChildrenDataEntity
 
-    suspend fun getListMemesLocalDataToDomain(data: List<MemeLocalEntity>): List<ChildrenEntity>
+    suspend fun getListMemesLocalDataToDomain(data: MutableList<MemeLocalEntity>): MutableList<ChildrenEntity>
+    suspend fun getChildrenLocalDataToDomain(localEntity: MemeLocalEntity): ChildrenEntity
     suspend fun getMemesLocalDataToDomain(data: MemeLocalEntity): ChildrenDataEntity
 }

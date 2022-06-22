@@ -5,5 +5,5 @@ import org.koin.dsl.module
 
 val useCasesModule = module {
     factory { IntroUseCase(get()) }
-    factory { HomeUseCase(get()) }
+    factory { GetListMemesChile(get()) }
 }

@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="childrenModel"
+            type="com.jsevilla.memeschilenos.domain.entity.ChildrenEntity" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp8"
+        android:layout_marginBottom="@dimen/dp8">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/imgUrl"
+            android:layout_width="@dimen/dp0"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            android:scaleType="fitXY"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/txtTitleChildren"
+            style="@style/textTextBold18"
+            android:layout_width="@dimen/dp0"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dp16"
+            android:layout_marginTop="@dimen/dp16"
+            android:layout_marginEnd="@dimen/dp16"
+            android:capitalize="sentences"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imgUrl"
+            tools:text="Hola Mundo" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/imgFavorite"
+            style="@style/ImageIconAction"
+            android:layout_marginStart="@dimen/dp16"
+            android:layout_marginTop="@dimen/dp8"
+            android:layout_marginBottom="@dimen/dp24"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:clickable="true"
+            android:focusable="true"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtTitleChildren"
+            app:srcCompat="@drawable/ic_favorite" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/imgComments"
+            style="@style/ImageIconAction"
+            android:layout_marginStart="@dimen/dp16"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:clickable="true"
+            android:focusable="true"
+            app:layout_constraintBottom_toBottomOf="@+id/imgFavorite"
+            app:layout_constraintStart_toEndOf="@+id/imgFavorite"
+            app:layout_constraintTop_toTopOf="@+id/imgFavorite"
+            app:srcCompat="@drawable/ic_comment" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/imgShare"
+            style="@style/ImageIconAction"
+            android:layout_marginStart="@dimen/dp16"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:clickable="true"
+            android:focusable="true"
+            app:layout_constraintBottom_toBottomOf="@+id/imgComments"
+            app:layout_constraintStart_toEndOf="@+id/imgComments"
+            app:layout_constraintTop_toTopOf="@+id/imgComments"
+            app:srcCompat="@drawable/ic_share" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/txtCommentsChildren"
+            style="@style/textTextNormal12"
+            android:layout_marginEnd="@dimen/dp2"
+            android:text="23 comentarios"
+            app:layout_constraintBottom_toBottomOf="@+id/imgShare"
+            app:layout_constraintEnd_toStartOf="@+id/txtScoreChildren"
+            app:layout_constraintTop_toTopOf="@+id/imgShare" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/txtScoreChildren"
+            style="@style/textTextNormal12"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/dp16"
+            android:text="- 678 Me Gusta"
+            app:layout_constraintBottom_toBottomOf="@+id/txtCommentsChildren"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/txtCommentsChildren" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
