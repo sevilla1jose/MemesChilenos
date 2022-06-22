@@ -79,4 +79,6 @@ Estas terminos y condiciones se han generado en terminosycondicionesdeusoejemplo
     <string name="menu_home">Inicio</string>
     <string name="menu_search">Buscar</string>
     <string name="menu_settings">Ajustes</string>
+    <string name="txtOnConnect">Estas conectado a una red de Internet</string>
+    <string name="TxtOffConnect"> Se desconecto de una red de Internet</string>
 </resources>
