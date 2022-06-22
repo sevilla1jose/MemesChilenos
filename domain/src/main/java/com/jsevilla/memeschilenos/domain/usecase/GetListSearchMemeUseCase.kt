@@ -5,9 +5,12 @@ import com.jsevilla.memeschilenos.domain.entity.Failure
 import com.jsevilla.memeschilenos.domain.entity.MemeEntity
 import com.jsevilla.memeschilenos.domain.repository.MemesChileRepository
 
-class GetListMemesChile(
+class GetListSearchMemeUseCase(
     private val memesChileRepository: MemesChileRepository
-) : BaseUseCase<MemeEntity, Any>() {
-    override suspend fun run(params: Any): Either<Failure, MemeEntity> =
-        memesChileRepository.getListMemes()
+) : BaseUseCase<MemeEntity, GetListSearchMemeUseCase.Params>() {
+
+    override suspend fun run(params: Params): Either<Failure, MemeEntity> =
+        memesChileRepository.getListSearchMemes(params.data)
+
+    data class Params(val data: String)
 }
