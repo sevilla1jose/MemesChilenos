@@ -10,24 +10,10 @@ import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import kotlin.reflect.KClass
 
-abstract class BaseBottomSheet<T : ViewDataBinding, out ViewModelType : BaseViewModel>(clazz: KClass<ViewModelType>) :
-    BottomSheetDialogFragment() {
-
+abstract class BaseBottomSheet<T : ViewDataBinding> : BottomSheetDialogFragment() {
     private lateinit var viewDataBinding: T
-    private lateinit var rootView: View
-
-    //val myViewModel: ViewModelType by viewModel(clazz)
 
     abstract val getLayoutId: Int
-
-    abstract val getBindingVariable: Int
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        /*if (myViewModel == null) {
-            throw Exception("View Model must not be null.")
-        }*/
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -35,9 +21,7 @@ abstract class BaseBottomSheet<T : ViewDataBinding, out ViewModelType : BaseView
         savedInstanceState: Bundle?
     ): View? {
         viewDataBinding = DataBindingUtil.inflate(inflater, getLayoutId, container, false)
-        rootView = viewDataBinding.root
-        //viewDataBinding.setVariable(getBindingVariable, myViewModel)
-        return rootView
+        return viewDataBinding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -45,8 +29,8 @@ abstract class BaseBottomSheet<T : ViewDataBinding, out ViewModelType : BaseView
         viewDataBinding.lifecycleOwner = this.viewLifecycleOwner
         viewDataBinding.executePendingBindings()
         if (savedInstanceState == null)
-            onFragmentViewReady(view)
+            onFragmentViewReady(viewDataBinding)
     }
 
-    abstract fun onFragmentViewReady(view: View)
+    abstract fun onFragmentViewReady(viewDataBinding: T)
 }

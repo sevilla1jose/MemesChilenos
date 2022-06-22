@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="settingsFragmentViewModel"
+            type="com.jsevilla.memeschilenos.feature.ui.fragment.settings.SettingsFragmentViewModel" />
+    </data>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".feature.ui.fragment.settings.SettingsFragment">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/txtTitle"
+                style="@style/textTitleBold24"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dp20"
+                android:layout_marginTop="@dimen/dp32"
+                android:text="@string/menu_settings"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/txtDarkOrLight"
+                style="@style/textTitleBold18"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dp20"
+                android:layout_marginTop="@dimen/dp24"
+                android:text="Selecciona el tema oscuro"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txtTitle" />
+
+            <com.google.android.material.switchmaterial.SwitchMaterial
+                android:id="@+id/switchDarkOrLight"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/dp20"
+                app:layout_constraintBottom_toBottomOf="@+id/txtDarkOrLight"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/txtDarkOrLight" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/txtDetailsDarkOrLight"
+                style="@style/textSubTitleNormal14"
+                android:layout_width="@dimen/dp0"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dp20"
+                android:layout_marginTop="@dimen/dp8"
+                android:text="Aquí puede seleccionar el estilo de su preferencia, recuerde que si no selecciona uno, se utilizará el estilo predeterminado por el sistema operativo"
+                app:layout_constraintEnd_toStartOf="@+id/switchDarkOrLight"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txtDarkOrLight" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/layoutComments"
+                android:layout_width="@dimen/dp0"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dp20"
+                android:layout_marginTop="@dimen/dp24"
+                android:background="?attr/selectableItemBackground"
+                android:clickable="true"
+                android:focusable="true"
+                app:layout_constraintEnd_toEndOf="@+id/txtDetailsDarkOrLight"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txtDetailsDarkOrLight">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/txtComments"
+                    style="@style/textTitleBold18"
+                    android:layout_width="@dimen/dp0"
+                    android:layout_height="wrap_content"
+                    android:text="@string/txtComments"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/txtDetailsComments"
+                    style="@style/textSubTitleNormal14"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp8"
+                    android:text="@string/txtDetailsComments"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/txtComments" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/layoutTermsAndCond"
+                android:layout_width="@dimen/dp0"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dp20"
+                android:layout_marginTop="@dimen/dp24"
+                android:background="?attr/selectableItemBackground"
+                android:clickable="true"
+                android:focusable="true"
+                app:layout_constraintEnd_toEndOf="@+id/txtDetailsDarkOrLight"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/layoutComments">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/txtTermsAndCond"
+                    style="@style/textTitleBold18"
+                    android:layout_width="@dimen/dp0"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/dp0"
+                    android:layout_marginTop="@dimen/dp0"
+                    android:layout_marginEnd="@dimen/dp0"
+                    android:text="@string/txtTermsAndCond"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/txtDetailsTermsAndCond"
+                    style="@style/textSubTitleNormal14"
+                    android:layout_width="@dimen/dp0"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp8"
+                    android:text="Consulta nuestros términos y condiciones"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/txtTermsAndCond" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/txtVersionApp"
+                style="@style/textVersionBold14"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dp20"
+                android:layout_marginEnd="@dimen/dp20"
+                android:layout_marginBottom="@dimen/dp48"
+                android:gravity="center|center_horizontal|center_vertical"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </FrameLayout>
+</layout>

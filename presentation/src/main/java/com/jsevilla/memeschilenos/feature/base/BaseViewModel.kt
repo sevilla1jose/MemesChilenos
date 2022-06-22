@@ -8,38 +8,26 @@ import com.jsevilla.memeschilenos.domain.entity.Failure
 
 abstract class BaseViewModel : ViewModel() {
 
-    // Shows or hide progress loading bar if the have it.
     private val _isLoading = MutableLiveData(false)
     val isLoading: LiveData<Boolean>
         get() = _isLoading
 
-    // Shows or hide and empty view layout if the view have it
     private val _showEmptyView = MutableLiveData(false)
     val showEmptyView: LiveData<Boolean>
         get() = _showEmptyView
 
-    // Shows, hide, init or stop refreshing of Swipe refresh layout if the view have it.
     private val _isRefreshing = MutableLiveData(false)
     val isRefreshing: LiveData<Boolean>
         get() = _isRefreshing
 
-    // Shows, hide, error message view.
     private val _showErrorCause = MutableLiveData(false)
     val showErrorCause: LiveData<Boolean>
         get() = _showErrorCause
 
-    // The resource default value of the error or any error(Exception, server side, etc).
-    private val _errorCause = MutableLiveData<Any>()
-    val errorCause: LiveData<Any>
+    private val _errorCause = MutableLiveData<Int>()
+    val errorCause: LiveData<Int>
         get() = _errorCause
 
-    protected fun logError(errorMessage: String?) {
-        Log.e(this.javaClass.simpleName, errorMessage ?: "error message is null.")
-    }
-
-    /*
-     * The following functions are just for presentation purposes
-     */
     protected fun setRefreshing(refreshValue: Boolean) {
         _isRefreshing.value = refreshValue
     }
@@ -58,15 +46,15 @@ abstract class BaseViewModel : ViewModel() {
 
     protected fun handleUseCaseFailureFromBase(failure: Failure) {
         when (failure) {
-            is Failure.UnauthorizedOrForbidden -> setError("No se puede iniciar sesión, verifique el código ingresado")
-            is Failure.None -> setError("None")
-            is Failure.NetworkConnectionLostSuddenly -> setError("Connection lost suddenly. Check the wifi or mobile data.")
-            is Failure.NoNetworkDetected -> setError("No network detected")
-            is Failure.SSLError -> setError("WARNING: SSL Exception")
-            is Failure.TimeOut -> setError("Time out.")
-            is Failure.ServerBodyError -> setError(failure.message)
-            is Failure.DataToDomainMapperFailure -> setError("Data to domain mapper failure: ${failure.mapperException}")
-            is Failure.ServiceUncaughtFailure -> setError(failure.uncaughtFailureMessage)
+            is Failure.UnauthorizedOrForbidden -> setError(1)
+            is Failure.None -> setError(2)
+            is Failure.NetworkConnectionLostSuddenly -> setError(3)
+            is Failure.NoNetworkDetected -> setError(4)
+            is Failure.SSLError -> setError(5)
+            is Failure.TimeOut -> setError(6)
+            is Failure.DataToDomainMapperFailure -> setError(7)
+            is Failure.ServerBodyError -> setError(8)
+            is Failure.ServiceUncaughtFailure -> setError(9)
         }
         showLoading(false)
         setRefreshing(false)
@@ -74,10 +62,7 @@ abstract class BaseViewModel : ViewModel() {
         showErrorCause(true)
     }
 
-    private fun setError(cause: Any) {
-        if (cause is String) {
-            logError(cause)
-        }
+    private fun setError(cause: Int) {
         _errorCause.value = cause
     }
 }

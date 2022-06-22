@@ -2,13 +2,6 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <data>
-
-        <variable
-            name="messageViewModel"
-            type="com.jsevilla.memeschilenos.feature.ui.bottomsheet.message.MessageViewModel" />
-    </data>
-
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -31,32 +24,45 @@
 
                 <View
                     android:id="@+id/view"
-                    android:layout_width="@dimen/dp40"
-                    android:layout_height="@dimen/dp2"
-                    android:background="@color/black" />
+                    android:layout_width="@dimen/dp200"
+                    android:layout_height="@dimen/dp4"
+                    android:background="@color/purple_500" />
             </LinearLayout>
         </androidx.cardview.widget.CardView>
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/txtTitle"
             style="@style/textTitleBold24"
-            android:layout_marginStart="@dimen/dp16"
+            android:layout_marginStart="@dimen/dp20"
             android:layout_marginTop="@dimen/dp16"
-            android:layout_marginEnd="@dimen/dp16"
-            android:text="@string/txtSave"
+            android:layout_marginEnd="@dimen/dp20"
+            android:text="@string/app_name"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/cardViewLine" />
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btnOk"
-            style="@style/buttonPrimary"
-            android:layout_marginTop="@dimen/dp24"
-            android:layout_marginBottom="@dimen/dp24"
-            android:text="@string/btnOk"
-            app:layout_constraintBottom_toBottomOf="parent"
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/txtSubTitle"
+            style="@style/textTitleNormal18"
+            android:layout_marginStart="@dimen/dp20"
+            android:layout_marginTop="@dimen/dp8"
+            android:layout_marginEnd="@dimen/dp20"
+            android:text="@string/app_name"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/txtTitle" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnOk"
+            style="@style/buttonPrimary"
+            android:layout_marginStart="@dimen/dp20"
+            android:layout_marginTop="@dimen/dp24"
+            android:layout_marginEnd="@dimen/dp20"
+            android:layout_marginBottom="@dimen/dp24"
+            android:text="@string/btnToAccept"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/txtSubTitle" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

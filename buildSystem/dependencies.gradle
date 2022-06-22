@@ -11,6 +11,9 @@ ext {
     // Navigation
     def nav_version = '2.4.2'
 
+    // Android X Legacy
+    def legacyVersion = '1.0.0'
+
     // Android Dx
     def lifecycleVersion = '2.4.1'
 
@@ -38,19 +41,28 @@ ext {
     // Logging Interceptor Android
     def loggingInterceptorVersion = '4.10.0'
 
+    // AppIntro AndroidX
+    def appIntroVersion = '6.2.0'
+
+    // Coil - An image loading library for Android backed by Kotlin Coroutines
+    def ciolVersion = '2.1.0'
+
     /*
      * Presentation dependencies
      */
     presentationDependencies = [
-            constraintLayout  : "androidx.constraintlayout:constraintlayout:$constraintLayout",
-            appCompat         : "androidx.appcompat:appcompat:$appcompat",
-            androidCore       : "androidx.core:core-ktx:$core",
-            viewModel         : "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycleVersion",
-            livedata          : "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycleVersion",
-            material          : "com.google.android.material:material:$materialVersion",
-            koin              : "io.insert-koin:koin-android:$koinVersion",
-            coroutinesCore    : "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutinesVersion",
-            coroutinesAndroid : "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutinesVersion"
+            constraintLayout : "androidx.constraintlayout:constraintlayout:$constraintLayout",
+            appCompat        : "androidx.appcompat:appcompat:$appcompat",
+            androidCore      : "androidx.core:core-ktx:$core",
+            legacy           : "androidx.legacy:legacy-support-v4:$legacyVersion",
+            viewModel        : "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycleVersion",
+            livedata         : "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycleVersion",
+            material         : "com.google.android.material:material:$materialVersion",
+            koin             : "io.insert-koin:koin-android:$koinVersion",
+            coroutinesCore   : "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutinesVersion",
+            coroutinesAndroid: "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutinesVersion",
+            appIntro         : "com.github.AppIntro:AppIntro:$appIntroVersion",
+            coil             : "io.coil-kt:coil:$ciolVersion"
     ]
 
     compileLifecycleDependencies = [
@@ -74,14 +86,14 @@ ext {
      * Domain Dependencies
      */
     domainDependencies = [
-            koin                : "io.insert-koin:koin-core:$koinVersion",
-            coroutinesCore      : "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutinesVersion",
-            coroutinesAndroid   : "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutinesVersion",
+            koin             : "io.insert-koin:koin-core:$koinVersion",
+            coroutinesCore   : "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutinesVersion",
+            coroutinesAndroid: "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutinesVersion",
     ]
 
     testDependencies = [
-            junit               : "junit:junit:$junitVersion",
-            androidxArchcore    : "androidx.arch.core:core-testing:$androidxArchCoreVersion"
+            junit           : "junit:junit:$junitVersion",
+            androidxArchcore: "androidx.arch.core:core-testing:$androidxArchCoreVersion"
     ]
 
     roomDependencies = [
@@ -92,20 +104,20 @@ ext {
      * Data Dependencies
      */
     dataDependencies = [
-            koin                    : "io.insert-koin:koin-android:$koinVersion",
-            retrofit                : "com.squareup.retrofit2:retrofit:$retrofitVersion",
-            loggingInterceptor      : "com.squareup.okhttp3:logging-interceptor:$loggingInterceptorVersion",
-            gsonConverter           : "com.squareup.retrofit2:converter-gson:$retrofitVersion",
-            roomDataBase            : "androidx.room:room-runtime:$roomVersion",
-            coroutinesCore          : "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutinesVersion",
-            coroutinesAndroid       : "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutinesVersion"
+            koin              : "io.insert-koin:koin-android:$koinVersion",
+            retrofit          : "com.squareup.retrofit2:retrofit:$retrofitVersion",
+            loggingInterceptor: "com.squareup.okhttp3:logging-interceptor:$loggingInterceptorVersion",
+            gsonConverter     : "com.squareup.retrofit2:converter-gson:$retrofitVersion",
+            roomDataBase      : "androidx.room:room-runtime:$roomVersion",
+            coroutinesCore    : "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutinesVersion",
+            coroutinesAndroid : "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutinesVersion"
     ]
 
     dataTestDependencies = [
-            junit           : "junit:junit:$junitVersion",
-            androidXcore    : "androidx.arch.core:core-testing:$androidxArchCoreVersion",
-            coroutinesTest  : "org.jetbrains.kotlinx:kotlinx-coroutines-test:$coroutinesVersion",
-            koinTest        : "io.insert-koin:koin-test:$koinVersion",
-            roomTest        : "androidx.room:room-testing:$roomVersion"
+            junit         : "junit:junit:$junitVersion",
+            androidXcore  : "androidx.arch.core:core-testing:$androidxArchCoreVersion",
+            coroutinesTest: "org.jetbrains.kotlinx:kotlinx-coroutines-test:$coroutinesVersion",
+            koinTest      : "io.insert-koin:koin-test:$koinVersion",
+            roomTest      : "androidx.room:room-testing:$roomVersion"
     ]
 }
