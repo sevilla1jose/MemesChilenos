@@ -15,6 +15,7 @@ class MemesChileRepositoryImpl(
 ) : MemesChileRepository {
     override suspend fun getListMemes(): Either<Failure, MemeEntity> {
         return if (networkUtils.isNetworkAvailable()) {
+            db.memesDao().deleteAll()
             when (val response = points.getListMemes()) {
                 is Either.Left -> Either.Left(response.a)
                 is Either.Right -> Either.Right(mapper.getMemesDataToDomain(response.b.data!!))

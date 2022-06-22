@@ -10,7 +10,7 @@ interface MemesDao {
     @Query("SELECT * FROM memes_chile_table")
     fun getAll(): MutableList<MemeLocalEntity>
 
-    @Query("SELECT * FROM memes_chile_table where title LIKE :data")
+    @Query("SELECT * FROM memes_chile_table where title LIKE '%' || :data || '%'")
     fun getSearchMeme(data: String): MutableList<MemeLocalEntity>
 
     @Insert

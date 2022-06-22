@@ -1,6 +1,8 @@
 package com.jsevilla.memeschilenos.feature.ui.activity.home
 
 import android.os.Bundle
+import android.util.Log
+import android.view.View
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -8,10 +10,13 @@ import com.jsevilla.memeschilenos.BR
 import com.jsevilla.memeschilenos.R
 import com.jsevilla.memeschilenos.databinding.ActivityHomeBinding
 import com.jsevilla.memeschilenos.feature.base.BaseActivity
+import kotlinx.coroutines.delay
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class HomeActivity : BaseActivity<ActivityHomeBinding, HomeViewModel>() {
     private val homeViewModel: HomeViewModel by viewModel()
+
+    private lateinit var activityHomeBinding: ActivityHomeBinding
 
     override val getLayoutId: Int
         get() = R.layout.activity_home
@@ -40,6 +45,9 @@ class HomeActivity : BaseActivity<ActivityHomeBinding, HomeViewModel>() {
         savedInstanceState?.let { data ->
             navView.selectedItemId = selectedItemNavigation(data.getInt("layout"))
         }
+
+        activityHomeBinding = viewDataBinding
+        observeViewModel()
     }
 
     override fun onPauseActivity() {}
@@ -51,5 +59,22 @@ class HomeActivity : BaseActivity<ActivityHomeBinding, HomeViewModel>() {
             3 -> R.id.navigation_settings
             else -> R.id.navigation_home
         }
+    }
+
+    private fun observeViewModel() {
+        getViewModel.initPage.observe(this) {
+            activityHomeBinding.cardViewConnectOn.visibility = View.GONE
+            activityHomeBinding.cardViewConnectOff.visibility = View.GONE
+        }
+    }
+
+    override fun onActivityConnect() {
+        activityHomeBinding.cardViewConnectOn.visibility = View.VISIBLE
+        getViewModel.initProcess()
+    }
+
+    override fun onActivityOffConnect() {
+        activityHomeBinding.cardViewConnectOff.visibility = View.VISIBLE
+        getViewModel.initProcess()
     }
 }

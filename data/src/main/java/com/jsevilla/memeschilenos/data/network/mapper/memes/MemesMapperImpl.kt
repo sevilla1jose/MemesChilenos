@@ -13,8 +13,6 @@ class MemesMapperImpl(
     private val db: AppDatabase
 ) : MemesMapper {
     override suspend fun getMemesDataToDomain(data: MemeResponse): MemeEntity {
-        db.memesDao().deleteAll()
-
         val listChildren: MutableList<ChildrenResponse> = arrayListOf()
         data.children.forEach { children ->
             if (children.data.linkFlairText == "Shitposting" && children.data.postHint == "image") {
@@ -59,6 +57,7 @@ class MemesMapperImpl(
         data.forEach {
             listChildren.add(getChildrenLocalDataToDomain(it))
         }
+        println("ESTOY AQUI: $listChildren")
         return listChildren
     }
 
@@ -84,6 +83,8 @@ class MemesMapperImpl(
                 listChildren.add(children)
             }
         }
+
+        println("BASE DE DATOS: $listChildren")
 
         return MemeEntity(
             children = listChildren.map {
