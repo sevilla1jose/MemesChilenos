@@ -7,6 +7,7 @@ import com.jsevilla.memeschilenos.data.di.preferencesModule
 import com.jsevilla.memeschilenos.data.di.repositoryModule
 import com.jsevilla.memeschilenos.di.viewModelModule
 import com.jsevilla.memeschilenos.domain.di.useCasesModule
+import com.jsevilla.memeschilenos.network.net.NetworkStateHolder.NetworkConnectivityBroadcaster
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
@@ -28,5 +29,7 @@ class MemesChilenosApplication : Application() {
                 )
             )
         }
+
+        NetworkConnectivityBroadcaster()
     }
 }

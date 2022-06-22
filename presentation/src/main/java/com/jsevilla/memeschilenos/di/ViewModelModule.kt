@@ -15,7 +15,7 @@ val viewModelModule = module {
     viewModel { IntroViewModel(get()) }
     viewModel { HomeViewModel(get()) }
     viewModel { HomeFragmentViewModel(get()) }
-    viewModel { SearchFragmentViewModel() }
+    viewModel { SearchFragmentViewModel(get(), get()) }
     viewModel { SettingsFragmentViewModel(get()) }
     viewModel { LegalViewModel(get()) }
 }

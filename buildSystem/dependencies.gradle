@@ -83,6 +83,15 @@ ext {
     ]
 
     /*
+     * Network Dependencies
+     */
+    networkDependencies = [
+            appCompat  : "androidx.appcompat:appcompat:$appcompat",
+            androidCore: "androidx.core:core-ktx:$core",
+
+    ]
+
+    /*
      * Domain Dependencies
      */
     domainDependencies = [

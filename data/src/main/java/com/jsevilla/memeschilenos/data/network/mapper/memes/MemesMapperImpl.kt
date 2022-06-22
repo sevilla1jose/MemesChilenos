@@ -1,4 +1,4 @@
-package com.jsevilla.memeschilenos.data.network.mapper.home
+package com.jsevilla.memeschilenos.data.network.mapper.memes
 
 import com.jsevilla.memeschilenos.data.local.db.AppDatabase
 import com.jsevilla.memeschilenos.data.local.entity.MemeLocalEntity
@@ -9,12 +9,10 @@ import com.jsevilla.memeschilenos.domain.entity.ChildrenDataEntity
 import com.jsevilla.memeschilenos.domain.entity.ChildrenEntity
 import com.jsevilla.memeschilenos.domain.entity.MemeEntity
 
-class HomeMapperImpl(
+class MemesMapperImpl(
     private val db: AppDatabase
-) : HomeMapper {
+) : MemesMapper {
     override suspend fun getMemesDataToDomain(data: MemeResponse): MemeEntity {
-        db.memesDao().deleteAll()
-
         val listChildren: MutableList<ChildrenResponse> = arrayListOf()
         data.children.forEach { children ->
             if (children.data.linkFlairText == "Shitposting" && children.data.postHint == "image") {
@@ -59,6 +57,7 @@ class HomeMapperImpl(
         data.forEach {
             listChildren.add(getChildrenLocalDataToDomain(it))
         }
+        println("ESTOY AQUI: $listChildren")
         return listChildren
     }
 
@@ -74,6 +73,38 @@ class HomeMapperImpl(
             url = data.url,
             score = data.score,
             numComments = data.numComments
+        )
+    }
+
+    override suspend fun getMemesSearchDataToDomain(data: MemeResponse): MemeEntity {
+        val listChildren: MutableList<ChildrenResponse> = arrayListOf()
+        data.children.forEach { children ->
+            if (children.data.linkFlairText == "Shitposting" && children.data.postHint == "image") {
+                listChildren.add(children)
+            }
+        }
+
+        println("BASE DE DATOS: $listChildren")
+
+        return MemeEntity(
+            children = listChildren.map {
+                getChildrenSearchDataToDomain(it)
+            }.toMutableList()
+        )
+    }
+
+    override suspend fun getChildrenSearchDataToDomain(listChildren: ChildrenResponse): ChildrenEntity {
+        return ChildrenEntity(
+            data = getChildrenDataSearchDataToDomain(listChildren.data)
+        )
+    }
+
+    override suspend fun getChildrenDataSearchDataToDomain(listChildrenData: ChildrenDataResponse): ChildrenDataEntity {
+        return ChildrenDataEntity(
+            title = listChildrenData.title,
+            url = listChildrenData.url,
+            score = listChildrenData.score,
+            numComments = listChildrenData.numComments
         )
     }
 }

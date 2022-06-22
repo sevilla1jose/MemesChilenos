@@ -26,9 +26,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeFragmentViewModel>(
     override val getBindingVariable: Int
         get() = BR.homeFragmentViewModel
 
-    override fun onResumeFragment() {
-
-    }
+    override fun onResumeFragment() {}
 
     override fun onViewCreatedFragment(viewDataBinding: FragmentHomeBinding) {
         viewDataBinding.recyclerViewMemes.adapter = adapter

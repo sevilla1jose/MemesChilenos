@@ -1,6 +1,7 @@
 package com.jsevilla.memeschilenos.feature.ui.activity.legal
 
 import android.os.Bundle
+import android.util.Log
 import com.jsevilla.memeschilenos.R
 import com.jsevilla.memeschilenos.BR
 import com.jsevilla.memeschilenos.databinding.ActivityLegalBinding
@@ -37,4 +38,8 @@ class LegalActivity : BaseActivity<ActivityLegalBinding, LegalViewModel>() {
     }
 
     override fun onPauseActivity() {}
+
+    override fun onActivityConnect() {}
+
+    override fun onActivityOffConnect() {}
 }
