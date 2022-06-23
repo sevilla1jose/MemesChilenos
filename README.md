@@ -8,6 +8,7 @@ This project contains the following.
   - Asynchronous processing using [Coroutines](https://kotlin.github.io/kotlinx.coroutines/)
   - [MVVM]
   - [Clean Architecture]
+  - Use [Room](https://developer.android.com/training/data-storage/room) for data storage
   - Uses [Koin](https://github.com/InsertKoinIO/koin) for dependency injection
   - Modularization per layer (Basic).
   - Uses [mockk](https://github.com/mockk/mockk) for mocking objects, interfaces & more.
