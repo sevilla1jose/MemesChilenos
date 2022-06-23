@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
+import com.jsevilla.memeschilenos.R
 import com.jsevilla.memeschilenos.network.net.Event
 import com.jsevilla.memeschilenos.network.net.NetworkConnectivityListener
 

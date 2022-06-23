@@ -8,6 +8,7 @@ import com.jsevilla.memeschilenos.databinding.FragmentSettingsBinding
 import com.jsevilla.memeschilenos.feature.base.BaseFragment
 import com.jsevilla.memeschilenos.feature.ui.bottomsheet.comments.CommentsBottomSheet
 import com.jsevilla.memeschilenos.feature.ui.bottomsheet.message.MessageBottomSheet
+import com.jsevilla.memeschilenos.utils.getStringMessage
 import com.jsevilla.memeschilenos.utils.goToTermsAndCond
 import com.jsevilla.memeschilenos.utils.recreateActivity
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -45,6 +46,8 @@ class SettingsFragment : BaseFragment<FragmentSettingsBinding, SettingsFragmentV
         }
         viewDataBinding.txtVersionApp.text =
             getString(R.string.appVersion, BuildConfig.VERSION_NAME)
+
+        observeViewModel()
     }
 
     private fun onClickButtonComments(): (comments: String) -> Unit {
@@ -69,5 +72,18 @@ class SettingsFragment : BaseFragment<FragmentSettingsBinding, SettingsFragmentV
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
         }
         recreateActivity(activity!!)
+    }
+
+    private fun observeViewModel() {
+        getViewModel.errorCause.observe(this) {
+            val message = getStringMessage(it)
+            val bottomSheet = MessageBottomSheet(
+                title = getString(R.string.txtTitleError),
+                subTitle = message,
+                textButton = getString(R.string.btnToAccept)
+            )
+            bottomSheet.isCancelable = false
+            bottomSheet.show(childFragmentManager, "getViewModel.errorCause")
+        }
     }
 }
