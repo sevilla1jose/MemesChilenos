@@ -85,7 +85,7 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
                 title = getString(R.string.txtTitleError),
                 subTitle = message,
                 textButton = getString(R.string.btnToAccept)
-            )
+            ) {}
             bottomSheet.isCancelable = false
             bottomSheet.show(supportFragmentManager, "getViewModel.errorCause")
         }

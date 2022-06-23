@@ -56,7 +56,7 @@ class SettingsFragment : BaseFragment<FragmentSettingsBinding, SettingsFragmentV
                 title = getString(R.string.txtThank),
                 subTitle = getString(R.string.txtDetailsThank),
                 textButton = getString(R.string.btnToAccept)
-            )
+            ){}
             bottomSheet.show(childFragmentManager, "viewDataBinding.MessageBottomSheet")
         }
     }
@@ -81,7 +81,7 @@ class SettingsFragment : BaseFragment<FragmentSettingsBinding, SettingsFragmentV
                 title = getString(R.string.txtTitleError),
                 subTitle = message,
                 textButton = getString(R.string.btnToAccept)
-            )
+            ) {}
             bottomSheet.isCancelable = false
             bottomSheet.show(childFragmentManager, "getViewModel.errorCause")
         }
