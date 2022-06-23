@@ -60,7 +60,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeFragmentViewModel>(
                 title = getString(R.string.txtTitleError),
                 subTitle = message,
                 textButton = getString(R.string.btnToAccept)
-            )
+            ) {}
             bottomSheet.isCancelable = false
             bottomSheet.show(childFragmentManager, "getViewModel.errorCause")
         }

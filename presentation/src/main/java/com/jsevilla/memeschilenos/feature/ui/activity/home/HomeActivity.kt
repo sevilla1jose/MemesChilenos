@@ -6,6 +6,8 @@ import android.view.View
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.android.material.shape.CornerFamily
+import com.google.android.material.shape.MaterialShapeDrawable
 import com.jsevilla.memeschilenos.BR
 import com.jsevilla.memeschilenos.R
 import com.jsevilla.memeschilenos.databinding.ActivityHomeBinding
@@ -75,7 +77,7 @@ class HomeActivity : BaseActivity<ActivityHomeBinding, HomeViewModel>() {
                 title = getString(R.string.txtTitleError),
                 subTitle = message,
                 textButton = getString(R.string.btnToAccept)
-            )
+            ) {}
             bottomSheet.isCancelable = false
             bottomSheet.show(supportFragmentManager, "getViewModel.errorCause")
         }
