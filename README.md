@@ -1,5 +1,7 @@
 # Memes Chilenos App
 
+This is an application that shows the memes of Chile using the Reddit API, in addition to having settings and requesting permissions for Android 12.
+
 [![Build Status](https://travis-ci.org/joemccann/dillinger.svg?branch=master)](https://travis-ci.org/joemccann/dillinger)
 
 This project contains the following.
