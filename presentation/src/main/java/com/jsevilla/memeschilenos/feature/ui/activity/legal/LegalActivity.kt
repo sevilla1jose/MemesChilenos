@@ -7,6 +7,7 @@ import com.jsevilla.memeschilenos.BR
 import com.jsevilla.memeschilenos.databinding.ActivityLegalBinding
 import com.jsevilla.memeschilenos.feature.base.BaseActivity
 import com.jsevilla.memeschilenos.feature.ui.bottomsheet.message.MessageBottomSheet
+import com.jsevilla.memeschilenos.utils.getStringMessage
 import com.jsevilla.memeschilenos.utils.recreateActivity
 import org.koin.androidx.viewmodel.ext.android.viewModel
 

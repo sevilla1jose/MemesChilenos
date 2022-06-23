@@ -51,18 +51,24 @@
                 app:layout_constraintTop_toBottomOf="@+id/constraintLayout"
                 tools:visibility="visible">
 
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/recyclerViewMemes"
+                <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+                    android:id="@+id/swipeRefreshLayoutMemes"
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/dp0"
-                    android:visibility="@{safeUnbox(homeFragmentViewModel.isRefreshing) ? View.VISIBLE : (safeUnbox(homeFragmentViewModel.isLoading) ? View.GONE : View.VISIBLE)}"
-                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    android:layout_height="match_parent"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    tools:itemCount="50"
-                    tools:listitem="@layout/item_layout_memes" />
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/recyclerViewMemes"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/dp0"
+                        android:visibility="@{safeUnbox(homeFragmentViewModel.isRefreshing) ? View.VISIBLE : (safeUnbox(homeFragmentViewModel.isLoading) ? View.GONE : View.VISIBLE)}"
+                        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                        tools:itemCount="50"
+                        tools:listitem="@layout/item_layout_memes" />
+                </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <androidx.constraintlayout.widget.ConstraintLayout

@@ -35,4 +35,12 @@ class HomeFragmentViewModel(
         showErrorCause(false)
         _isListMemes.value = memeEntity
     }
+
+    fun getRefreshListMemes() {
+        showLoading(false)
+        shouldShowEmptyView(false)
+        getListMemesChile.invoke(viewModelScope, Any()) {
+            it.either(::handleUseCaseFailureFromBase, ::handleUseCaseSuccessInfoHome)
+        }
+    }
 }
