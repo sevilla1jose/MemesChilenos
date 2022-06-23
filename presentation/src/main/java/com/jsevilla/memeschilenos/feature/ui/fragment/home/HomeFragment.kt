@@ -6,6 +6,8 @@ import com.jsevilla.memeschilenos.R
 import com.jsevilla.memeschilenos.databinding.FragmentHomeBinding
 import com.jsevilla.memeschilenos.feature.adapter.RvAdapterListMemes
 import com.jsevilla.memeschilenos.feature.base.BaseFragment
+import com.jsevilla.memeschilenos.feature.ui.bottomsheet.message.MessageBottomSheet
+import com.jsevilla.memeschilenos.utils.getStringMessage
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class HomeFragment : BaseFragment<FragmentHomeBinding, HomeFragmentViewModel>(
@@ -43,6 +45,17 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeFragmentViewModel>(
     private fun observeViewModel() {
         getViewModel.isListMemes.observe(this) { memes ->
             adapter.update(memes.children)
+        }
+
+        getViewModel.errorCause.observe(this) {
+            val message = getStringMessage(it)
+            val bottomSheet = MessageBottomSheet(
+                title = getString(R.string.txtTitleError),
+                subTitle = message,
+                textButton = getString(R.string.btnToAccept)
+            )
+            bottomSheet.isCancelable = false
+            bottomSheet.show(childFragmentManager, "getViewModel.errorCause")
         }
     }
 }
