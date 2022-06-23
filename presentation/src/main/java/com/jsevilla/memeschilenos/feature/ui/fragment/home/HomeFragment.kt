@@ -14,6 +14,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeFragmentViewModel>(
     R.layout.fragment_home
 ) {
     private val homeFragmentViewModel: HomeFragmentViewModel by viewModel()
+    private lateinit var fragmentHomeBinding: FragmentHomeBinding
 
     private val adapter by lazy {
         RvAdapterListMemes(
@@ -31,8 +32,13 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeFragmentViewModel>(
     override fun onResumeFragment() {}
 
     override fun onViewCreatedFragment(viewDataBinding: FragmentHomeBinding) {
+        fragmentHomeBinding = viewDataBinding
         viewDataBinding.recyclerViewMemes.adapter = adapter
         viewDataBinding.recyclerViewMemes.layoutManager = LinearLayoutManager(requireContext())
+
+        viewDataBinding.swipeRefreshLayoutMemes.setOnRefreshListener {
+            getViewModel.getRefreshListMemes()
+        }
 
         observeViewModel()
         getViewModel.getListMemes()
@@ -45,6 +51,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeFragmentViewModel>(
     private fun observeViewModel() {
         getViewModel.isListMemes.observe(this) { memes ->
             adapter.update(memes.children)
+            fragmentHomeBinding.swipeRefreshLayoutMemes.isRefreshing = false
         }
 
         getViewModel.errorCause.observe(this) {

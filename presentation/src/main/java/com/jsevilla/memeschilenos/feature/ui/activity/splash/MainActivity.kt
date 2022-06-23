@@ -16,6 +16,7 @@ import com.jsevilla.memeschilenos.feature.base.BaseActivity
 import com.jsevilla.memeschilenos.feature.ui.activity.home.HomeActivity
 import com.jsevilla.memeschilenos.feature.ui.activity.intro.IntroActivity
 import com.jsevilla.memeschilenos.feature.ui.bottomsheet.message.MessageBottomSheet
+import com.jsevilla.memeschilenos.utils.getStringMessage
 import com.jsevilla.memeschilenos.utils.recreateActivity
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
