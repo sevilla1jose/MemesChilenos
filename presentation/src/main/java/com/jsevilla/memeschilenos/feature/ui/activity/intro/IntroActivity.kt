@@ -2,12 +2,14 @@ package com.jsevilla.memeschilenos.feature.ui.activity.intro
 
 import android.Manifest
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.fragment.app.Fragment
 import com.github.appintro.AppIntro2
 import com.github.appintro.AppIntroCustomLayoutFragment.Companion.newInstance
 import com.github.appintro.AppIntroPageTransformerType
 import com.jsevilla.memeschilenos.R
+import com.jsevilla.memeschilenos.feature.ui.bottomsheet.message.MessageBottomSheet
 import com.jsevilla.memeschilenos.utils.recreateActivity
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -68,10 +70,26 @@ class IntroActivity : AppIntro2() {
     }
 
     override fun onUserDeniedPermission(permissionName: String) {
-        // User pressed "Deny" on the permission dialog
+        val bottomSheet = MessageBottomSheet(
+            title = getString(R.string.txtTitleMessagePermission),
+            subTitle = getString(R.string.txtSubTitleMessagePermission),
+            textButton = getString(R.string.btnToAccept)
+        ) {}
+        bottomSheet.isCancelable = false
+        bottomSheet.show(supportFragmentManager, "getViewModel.errorCause")
     }
 
     override fun onUserDisabledPermission(permissionName: String) {
-        // User pressed "Deny" + "Don't ask again" on the permission dialog
+        val bottomSheet = MessageBottomSheet(
+            title = getString(R.string.txtTitleMessagePermission),
+            subTitle = getString(R.string.txtMessagePermission),
+            textButton = getString(R.string.btnToAccept)
+        ) { onClickActionButton() }
+        bottomSheet.isCancelable = false
+        bottomSheet.show(supportFragmentManager, "getViewModel.errorCause")
+    }
+
+    private fun onClickActionButton() {
+        goToNextSlide()
     }
 }

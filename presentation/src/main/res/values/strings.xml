@@ -82,6 +82,9 @@ Estas terminos y condiciones se han generado en terminosycondicionesdeusoejemplo
     <string name="txtOnConnect">Estas conectado a una red de Internet</string>
     <string name="TxtOffConnect"> Se desconecto de una red de Internet</string>
 
+    <string name="txtTitleMessagePermission">¡Oh! Fallo</string>
+    <string name="txtSubTitleMessagePermission">Requerimos el permiso para funcionar de manera correcta</string>
+    <string name="txtMessagePermission">Ahora no nos ha dado permiso, pero mas adelante te lo volveremos a solicitar</string>
     <string name="txtTitleError">¡Oh! Algo paso</string>
     <string name="error_gps_permission">La configuración de la ubicación no es adecuada y no se puede corregir.\nArreglar en Configuración.</string>
     <string name="error_unauthorized_or_forbidden">No se puede iniciar sesión.\nverificar el usuario y la contraseña.</string>

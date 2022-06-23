@@ -67,7 +67,7 @@ class SearchFragment : BaseFragment<FragmentSearchBinding, SearchFragmentViewMod
                 title = getString(R.string.txtTitleError),
                 subTitle = message,
                 textButton = getString(R.string.btnToAccept)
-            )
+            ) {}
             bottomSheet.isCancelable = false
             bottomSheet.show(childFragmentManager, "getViewModel.errorCause")
         }

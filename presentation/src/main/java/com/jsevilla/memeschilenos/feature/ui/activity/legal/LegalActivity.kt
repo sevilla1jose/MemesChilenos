@@ -54,7 +54,7 @@ class LegalActivity : BaseActivity<ActivityLegalBinding, LegalViewModel>() {
                 title = getString(R.string.txtTitleError),
                 subTitle = message,
                 textButton = getString(R.string.btnToAccept)
-            )
+            ) {}
             bottomSheet.isCancelable = false
             bottomSheet.show(supportFragmentManager, "getViewModel.errorCause")
         }
