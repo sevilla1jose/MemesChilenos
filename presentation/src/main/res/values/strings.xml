@@ -81,4 +81,13 @@ Estas terminos y condiciones se han generado en terminosycondicionesdeusoejemplo
     <string name="menu_settings">Ajustes</string>
     <string name="txtOnConnect">Estas conectado a una red de Internet</string>
     <string name="TxtOffConnect"> Se desconecto de una red de Internet</string>
+
+    <string name="txtTitleError">¡Oh! Algo paso</string>
+    <string name="error_gps_permission">La configuración de la ubicación no es adecuada y no se puede corregir.\nArreglar en Configuración.</string>
+    <string name="error_unauthorized_or_forbidden">No se puede iniciar sesión.\nverificar el usuario y la contraseña.</string>
+    <string name="error_none">Error inesperado, consulte a su administrador sobre las causas del problema.</string>
+    <string name="error_network_connection_lost_suddenly">La conexión se perdió de repente. Comprueba el wifi o los datos móviles.</string>
+    <string name="error_not_network_detected">No se detectó ninguna red.\nComprueba el wifi o los datos móviles.</string>
+    <string name="error_ssl_error">ADVERTENCIA: Excepción SSL.</string>
+    <string name="error_time_out">Se acabó el tiempo de conexión.</string>
 </resources>

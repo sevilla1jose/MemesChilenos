@@ -57,7 +57,7 @@ class MemesMapperImpl(
         data.forEach {
             listChildren.add(getChildrenLocalDataToDomain(it))
         }
-        println("ESTOY AQUI: $listChildren")
+
         return listChildren
     }
 
@@ -83,8 +83,6 @@ class MemesMapperImpl(
                 listChildren.add(children)
             }
         }
-
-        println("BASE DE DATOS: $listChildren")
 
         return MemeEntity(
             children = listChildren.map {

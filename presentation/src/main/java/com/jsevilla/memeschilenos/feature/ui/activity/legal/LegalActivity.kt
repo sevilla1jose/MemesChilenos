@@ -6,6 +6,8 @@ import com.jsevilla.memeschilenos.R
 import com.jsevilla.memeschilenos.BR
 import com.jsevilla.memeschilenos.databinding.ActivityLegalBinding
 import com.jsevilla.memeschilenos.feature.base.BaseActivity
+import com.jsevilla.memeschilenos.feature.ui.bottomsheet.message.MessageBottomSheet
+import com.jsevilla.memeschilenos.utils.getStringMessage
 import com.jsevilla.memeschilenos.utils.recreateActivity
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -35,6 +37,8 @@ class LegalActivity : BaseActivity<ActivityLegalBinding, LegalViewModel>() {
         viewDataBinding.imgBack.setOnClickListener {
             recreateActivity(activity = this, 3)
         }
+
+        observeViewModel()
     }
 
     override fun onPauseActivity() {}
@@ -42,4 +46,17 @@ class LegalActivity : BaseActivity<ActivityLegalBinding, LegalViewModel>() {
     override fun onActivityConnect() {}
 
     override fun onActivityOffConnect() {}
+
+    private fun observeViewModel() {
+        getViewModel.errorCause.observe(this) {
+            val message = getStringMessage(it)
+            val bottomSheet = MessageBottomSheet(
+                title = getString(R.string.txtTitleError),
+                subTitle = message,
+                textButton = getString(R.string.btnToAccept)
+            )
+            bottomSheet.isCancelable = false
+            bottomSheet.show(supportFragmentManager, "getViewModel.errorCause")
+        }
+    }
 }

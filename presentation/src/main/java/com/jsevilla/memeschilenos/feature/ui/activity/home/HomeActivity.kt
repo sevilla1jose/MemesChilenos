@@ -10,6 +10,8 @@ import com.jsevilla.memeschilenos.BR
 import com.jsevilla.memeschilenos.R
 import com.jsevilla.memeschilenos.databinding.ActivityHomeBinding
 import com.jsevilla.memeschilenos.feature.base.BaseActivity
+import com.jsevilla.memeschilenos.feature.ui.bottomsheet.message.MessageBottomSheet
+import com.jsevilla.memeschilenos.utils.getStringMessage
 import kotlinx.coroutines.delay
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -65,6 +67,17 @@ class HomeActivity : BaseActivity<ActivityHomeBinding, HomeViewModel>() {
         getViewModel.initPage.observe(this) {
             activityHomeBinding.cardViewConnectOn.visibility = View.GONE
             activityHomeBinding.cardViewConnectOff.visibility = View.GONE
+        }
+
+        getViewModel.errorCause.observe(this) {
+            val message = getStringMessage(it)
+            val bottomSheet = MessageBottomSheet(
+                title = getString(R.string.txtTitleError),
+                subTitle = message,
+                textButton = getString(R.string.btnToAccept)
+            )
+            bottomSheet.isCancelable = false
+            bottomSheet.show(supportFragmentManager, "getViewModel.errorCause")
         }
     }
 
